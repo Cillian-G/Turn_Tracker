@@ -4,9 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>Turn Tracker</h1>
+    <p>Instructional text</p>
+    <button data-type="submit">Next</button>
+    <h3>Clockwise or Random order</h3>
+    <button data-type="submit">Clockwise</button><button data-type="submit">Random</button>
+
+    <h3>Enter player names</h3>
+    <p>
+        If you selected the clockwise setting, make sure to 
+        enter your names in clockwise order around the table.
+    </p>
+    <form action="">
+        <div>
+            <input type="text" name="name" required>
+            <input type="list" name="color" list="colors">
+            <datalist id="colors">
+                <option value="Blue">
+                <option value="Green">
+                <option value="Yellow">
+                <option value="Red">
+                <option value="Black">
+                <option value="White">
+                <option value="Pink">
+                <option value="Purple">
+                <option value="Grey">
+                </datalist>
+        </div>
+        <button>add another player</button>
+        <button>Generate player order</button>
+    </form>
+
+    <h3>Turn order:</h3>
+    <button>Start game</button>
+    <button>Pause game</button>
+    <button>End game</button>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
