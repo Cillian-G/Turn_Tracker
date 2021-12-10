@@ -10,9 +10,10 @@
 <body>
     <h1>Turn Tracker</h1>
     <p>Instructional text</p>
-    <button data-type="submit">Next</button>
+    <button data-type="submit" id="start-button">Next</button>
     <h3>Clockwise or Random order</h3>
-    <button data-type="submit">Clockwise</button><button data-type="submit">Random</button>
+    <button data-type="submit" id="clockwise-button">Clockwise</button>
+    <button data-type="submit" id="random-button">Random</button>
 
     <h3>Enter player names</h3>
     <p>
@@ -23,17 +24,6 @@
         <div>
             <input type="text" name="name" required>
             <input type="list" name="color" list="colors">
-            <datalist id="colors">
-                <option value="Blue">
-                <option value="Green">
-                <option value="Yellow">
-                <option value="Red">
-                <option value="Black">
-                <option value="White">
-                <option value="Pink">
-                <option value="Purple">
-                <option value="Grey">
-            </datalist>
             <select name="color" id="colors">
                 <option value="orange">🟠</option>
                 <option value="purple">🟣</option>
@@ -46,14 +36,14 @@
                 <option value="red">🔴</option>
             </select>
         </div>
-        <button>add another player</button>
-        <button>Generate player order</button>
+        <button id="generate-player-order">Generate player order</button>
     </form>
 
     <h3>Turn order:</h3>
-    <button>Start game</button>
-    <button>Pause game</button>
-    <button>End game</button>
+    <button id="start-game">Start game</button>
+    <button id="pause-game">Pause game</button>
+    <button id="end-turn">End Turn</button>
+    <button id="end-game">End game</button>
     
     <script src="assets/js/script.js"></script>
 </body>
