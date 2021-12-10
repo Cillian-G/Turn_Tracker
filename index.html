@@ -12,29 +12,19 @@
     <p>Instructional text</p>
     <button data-type="submit" id="start-button">Next</button>
     <h3>Clockwise or Random order</h3>
-    <button data-type="submit" id="clockwise-button">Clockwise</button>
-    <button data-type="submit" id="random-button">Random</button>
+    <button data-type="submit" id="clockwise-button" data-type="clockwise">Clockwise</button>
+    <button data-type="submit" id="random-button" data-type="random">Random</button>
 
     <h3>Enter player names</h3>
     <p>
-        If you selected the clockwise setting, make sure to 
-        enter your names in clockwise order around the table.
+        <p>Enter a name and select a color for each player</p>
+        <span id="clockwise-instructions">
+        For the clockwise setting to work, make sure to 
+        enter your names in clockwise order around the table.</span>
     </p>
     <form action="">
-        <div>
-            <input type="text" name="name" required>
-            <input type="list" name="color" list="colors">
-            <select name="color" id="colors">
-                <option value="orange">🟠</option>
-                <option value="purple">🟣</option>
-                <option value="black">⚫</option>
-                <option value="blue">🔵</option>
-                <option value="yellow">🟡</option>
-                <option value="brown">🟤</option>
-                <option value="white">⚪</option>
-                <option value="green">🟢</option>
-                <option value="red">🔴</option>
-            </select>
+        <div id="player-details-form">
+            
         </div>
         <button id="generate-player-order">Generate player order</button>
     </form>
@@ -44,7 +34,10 @@
     <button id="pause-game">Pause game</button>
     <button id="end-turn">End Turn</button>
     <button id="end-game">End game</button>
-    
+
+    <p id="selected-order"></p>
+
+
     <script src="assets/js/script.js"></script>
 </body>
 </html>
