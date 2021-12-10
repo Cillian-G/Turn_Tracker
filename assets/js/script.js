@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function(){
     let nameAndColor = "";
 
     for(i = 0; i < 9; i++) {
-        nameAndColor += `,<div>
+        nameAndColor += `<div>
                 <label for="name${[i]}"></label>        
                 <input type="text" name="name" id="name${[i]}" required>
                 <label for id="colors${[i]}">Player color</label>
