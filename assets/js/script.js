@@ -1,10 +1,11 @@
 /**
- * continue-button clockwise-selection, random-selection, 
+ * start-button clockwise-selection, random-selection, 
  * generate-player-order, start-game, pause-turn, end-turn, end-game
  * **/
 
 document.addEventListener("DOMContentLoaded", function(){
-    console.log("Hello world")
+    
+    
     let nameAndColor = "";
 
     for(i = 0; i < 9; i++) {
@@ -30,11 +31,31 @@ document.addEventListener("DOMContentLoaded", function(){
 
     /**
      * The button on the welcome page that hides the welcome/explanation text
-     *  and presents players with order selection buttons. currently holding placeholder javascript
+     *  and presents players with order selection buttons. Currently holding placeholder javascript
      */
-    document.getElementById("continue-button").addEventListener("click", function(){
+    document.getElementById("start-button").addEventListener("click", function(){
         console.log("")
     })
 
-    document.getElementById("random")
+    /**
+     * The button that gives the text content "random" to a hidden HTML element
+     *  before hiding this section of HTML and presenting the user with the player details form
+     */
+    document.getElementById("random-button").addEventListener("click", function(){
+        document.getElementById("selected-order").innerHTML = "random";
+    })
+
+    /**
+     * The button that gives the text content "clockwise" to a hidden HTML element
+     * before hiding this section of HTML and presenting the user with the player details form
+     */
+    document.getElementById("clockwise-button").addEventListener("click", function(){
+        document.getElementById("selected-order").innerHTML = "clockwise";
+    })
+    
+    document.getElementById("generate-player-order").addEventListener("click", generatePlayerOrder())
 })
+
+function generatePlayerOrder(){
+    console.log("generatePlayerOrder")
+}
