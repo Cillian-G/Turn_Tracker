@@ -23,18 +23,24 @@ document.addEventListener("DOMContentLoaded", function(){
 
     document.getElementById("random-button").addEventListener("click", function(){
         document.getElementById("selected-order").innerHTML = "random";
+        orderType = "random";
+
     })
 
     /*The button that gives the text content "clockwise" to a hidden HTML element */
      
     document.getElementById("clockwise-button").addEventListener("click", function(){
         document.getElementById("selected-order").innerHTML = "clockwise";
+        orderType - "clockwise"
     })
     
     document.getElementById("player-details-form").addEventListener("submit", generatePlayerOrder);
 })
 
 let numberOfPlayers = 0;
+let orderType = ""; 
+let playerDetails = new Array
+console.log(playerDetails)
 
 function numberSubmit(event) {
     event.preventDefault();
@@ -69,11 +75,20 @@ function numberSubmit(event) {
 function generatePlayerOrder(event) {
     event.preventDefault();
     console.log("generateplayerorder");
-    //let numberOfPlayers = document.getElementById("number-of-players").textContent.parseInt;
-    console.log(numberOfPlayers)
-    let playerDetails = new Array(numberOfPlayers.value);
-    console.log(playerDetails);
 
+    console.log(numberOfPlayers);
+    console.log(playerDetails); 
+    if (hasDuplicates(testArray)) {
+        alert ("Each player must have a unique color");
+    } else {console.log("play on!") }
 }
 
 // [ {name: , color: , time: } {name: , color: , time: } {name: , color: , time: }]
+
+testArray = ["red","blue","green"];
+
+function hasDuplicates(testArray) {
+    return (new Set(testArray)).size !== testArray.length;
+}
+
+
