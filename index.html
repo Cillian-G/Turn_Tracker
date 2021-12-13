@@ -11,7 +11,7 @@
     <h1>Turn Tracker</h1>
     <p>Instructional text</p>
 
-    <form action="" id="number-selection-form">
+    <form id="number-selection-form">
         <label for="number-of-players">How many are playing?</label>
         <input type="number" name="number" min="2" max="9" required>
         <button data-type="submit" id="start-button">Next</button>
@@ -33,11 +33,11 @@
         
     </p>
 
-    <form action="">
+    <form id="player-details-form">
 
-        <div id="player-details-form"></div>
+        <div id="player-details-div"></div>
 
-        <button id="generate-player-order">Generate player order</button>
+        <button id="generate-player-order" data-type="submit">Generate player order</button>
 
     </form>
 
@@ -48,7 +48,7 @@
     <button id="end-game">End game</button>
 
     <p id="selected-order"></p>
-
+    <p id="number-of-players"></p>
 
     <script src="assets/js/script.js"></script>
 </body>
