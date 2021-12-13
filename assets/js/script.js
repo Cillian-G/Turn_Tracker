@@ -79,6 +79,8 @@ function generatePlayerOrder(event) {
     console.log(numberOfPlayers);
     console.log(playerDetails);
 
+
+    
     let colorSelection = new Array;
     
     for (i = 0; i < numberOfPlayers; i++) {
@@ -88,7 +90,20 @@ function generatePlayerOrder(event) {
 
     if (hasDuplicates(colorSelection)) {
         alert ("Each player must have a unique color");
-    } else {console.log("play on!") }
+    } else { 
+        for (i=0; i < numberOfPlayers; i++) {
+            let playerName = "";
+            let playerColor = "";
+            let player = {};
+            playerName = document.getElementById("player-details-form").elements[`name${[i]}`].value;
+            playerColor = document.getElementById("player-details-form").elements[`colors-id${[i]}`].value;
+            player =  { Name: playerName , Color:playerColor , Time: 0 };
+            playerDetails.push(player);
+        }
+        console.log("play on!")
+        let testing = playerDetails[0];
+        console.log(testing);
+    }
 }
 
 
