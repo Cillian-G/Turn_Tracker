@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function(){
      
     document.getElementById("clockwise-button").addEventListener("click", function(){
         document.getElementById("selected-order").innerHTML = "clockwise";
-        orderType - "clockwise"
+        orderType = "clockwise"
     })
     
     document.getElementById("player-details-form").addEventListener("submit", generatePlayerOrder);
@@ -100,9 +100,19 @@ function generatePlayerOrder(event) {
             player =  { Name: playerName , Color:playerColor , Time: 0 };
             playerDetails.push(player);
         }
-        console.log("play on!")
-        let testing = playerDetails[0];
-        console.log(testing);
+
+        if (orderType === "random") {
+            console.log("random")
+
+        } else if (orderType === "clockwise") {
+            let firstPlayerIndex = Math.floor(Math.random * (playerDetails.length));
+            console.log(firstPlayerIndex)
+            console.log(playerDetails[firstPlayerIndex]);
+
+        } else alert("You havent chosen a valid order type, please refresh to start again")
+        // console.log("play on!")
+        // let testing = playerDetails[0];
+        // console.log(testing);
     }
 }
 
