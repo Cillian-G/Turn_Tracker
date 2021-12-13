@@ -91,6 +91,7 @@ function generatePlayerOrder(event) {
     if (hasDuplicates(colorSelection)) {
         alert ("Each player must have a unique color");
     } else { 
+        playerDetails = [] /* this allows for easier testing, prevents playerDetails from repeatedly adding details */
         for (i=0; i < numberOfPlayers; i++) {
             let playerName = "";
             let playerColor = "";
@@ -103,13 +104,30 @@ function generatePlayerOrder(event) {
 
         if (orderType === "random") {
             console.log("random")
+            console.log(playerDetails.length)
 
         } else if (orderType === "clockwise") {
-            let firstPlayerIndex = Math.floor(Math.random * (playerDetails.length));
-            console.log(firstPlayerIndex)
-            console.log(playerDetails[firstPlayerIndex]);
+            let randomNumberRange = playerDetails.length;
+            let firstPlayerIndex = Math.floor(Math.random() * randomNumberRange);
+                if (firstPlayerIndex === 0) {
+                    console.log("its just a coincidence!!");
+                } else {
+                    let playerDetailsSlice = playerDetails.slice(0, firstPlayerIndex);
+                    console.log(playerDetailsSlice);
+                    playerDetails.splice(0, firstPlayerIndex);
+                    console.log(playerDetails);
+                    playerDetails.push(playerDetailsSlice);
+                    console.log(playerDetails)
+                }
 
-        } else alert("You havent chosen a valid order type, please refresh to start again")
+            console.log(randomNumberRange);
+            console.log(firstPlayerIndex);
+            console.log(playerDetails[firstPlayerIndex]); 
+            // ^^^^^^for testing the clockwise function
+
+        } else { 
+            alert("You havent chosen a invalid order type, please refresh to start again")
+        }
         // console.log("play on!")
         // let testing = playerDetails[0];
         // console.log(testing);
