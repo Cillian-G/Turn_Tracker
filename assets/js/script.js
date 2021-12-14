@@ -105,8 +105,8 @@ function generatePlayerOrder(event) {
         console.log(playerDetails)
 
         if (orderType === "random") {
-            console.log("random")
-            console.log(playerDetails.length)
+            shuffle(playerDetails);
+            console.log(playerDetails);
 
         } else if (orderType === "clockwise") {
             let randomNumberRange = playerDetails.length;
@@ -124,11 +124,6 @@ function generatePlayerOrder(event) {
                     console.log(orderedPlayerDetails)
                 }
 
-            console.log(randomNumberRange);
-            console.log(firstPlayerIndex);
-            console.log(playerDetails[firstPlayerIndex]); 
-            // ^^^^^^for testing the clockwise function
-
         } else { 
             alert("You havent chosen a invalid order type, please refresh to start again")
         }
@@ -141,6 +136,18 @@ function generatePlayerOrder(event) {
 
 function hasDuplicates(colorSelection) {
     return (new Set(colorSelection)).size !== colorSelection.length;
+}
+
+function shuffle(playerDetails) {
+    let m = playerDetails.length, t, i;
+
+    while (m) {
+        i = Math.floor(Math.random() * m--);
+        t = playerDetails[m];
+        playerDetails[m] = playerDetails[i]
+        playerDetails[i] = t;
+    }
+    return playerDetails;
 }
 
 
