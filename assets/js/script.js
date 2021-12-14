@@ -35,13 +35,22 @@ document.addEventListener("DOMContentLoaded", function(){
     })
     
     document.getElementById("player-details-form").addEventListener("submit", generatePlayerOrder);
+
+    document.getElementById("start-game").addEventListener("click", startGame);
+
+    document.getElementById("end-game").addEventListener("click", endGame);
+
+    document.getElementById("pause-game").addEventListener("click", pauseGame);
+
+    document.getElementById("end-turn").addEventListener("click", endTurn);
 })
 
 let numberOfPlayers = 0;
 let orderType = ""; 
-let playerDetails = new Array
-let orderedPlayerDetails = new Array
-console.log(playerDetails)
+let playerDetails = new Array;
+let orderedPlayerDetails = new Array;
+let stopwatch = document.getElementById("stopwatch");
+let roundTracker = 0;
 
 function numberSubmit(event) {
     event.preventDefault();
@@ -163,19 +172,31 @@ function buildOrderList(orderedPlayerDetails) {
     }
     orderList.innerHTML = players;
 }
-
+// this function will commence the first players turn
 function startGame(){
-    console.log("start game")
+    if (orderedPlayerDetails[roundTracker].Name.endsWith("s")){
+        document.getElementById("current-player").innerHTML = `${orderedPlayerDetails[roundTracker].Name}'`;
+        roundTracker++;
+    } else {
+        document.getElementById("current-player").innerHTML = `${orderedPlayerDetails[roundTracker].Name}'s`;
+        roundTracker++;
+    }
+    
+    console.log(roundTracker)
 }
 
+// this function will effectively just pause the stopwatch on the current players turn
 function pauseGame(){
-    console.log("start game")
+    console.log("pause game")
 }
 
+// this function will end a players turn, and start the following players turn
 function endTurn(){
-    console.log("start game")
+    console.log("end turn")
 }
 
+// this function will end the game and present each players total "turn-time"
 function endGame(){
-    console.log("start game")
+    console.log("end game")
 }
+
