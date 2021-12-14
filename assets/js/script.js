@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function(){
 let numberOfPlayers = 0;
 let orderType = ""; 
 let playerDetails = new Array
+let orderedPlayerDetails = new Array
 console.log(playerDetails)
 
 function numberSubmit(event) {
@@ -101,6 +102,7 @@ function generatePlayerOrder(event) {
             player =  { Name: playerName , Color:playerColor , Time: 0 };
             playerDetails.push(player);
         }
+        console.log(playerDetails)
 
         if (orderType === "random") {
             console.log("random")
@@ -111,13 +113,15 @@ function generatePlayerOrder(event) {
             let firstPlayerIndex = Math.floor(Math.random() * randomNumberRange);
                 if (firstPlayerIndex === 0) {
                     console.log("its just a coincidence!!");
+                    console.log(playerDetails);
                 } else {
                     let playerDetailsSlice = playerDetails.slice(0, firstPlayerIndex);
                     console.log(playerDetailsSlice);
                     playerDetails.splice(0, firstPlayerIndex);
                     console.log(playerDetails);
-                    playerDetails.push(playerDetailsSlice);
-                    console.log(playerDetails)
+                    console.log(playerDetailsSlice)
+                    orderedPlayerDetails = playerDetails.concat(playerDetailsSlice);
+                    console.log(orderedPlayerDetails)
                 }
 
             console.log(randomNumberRange);
