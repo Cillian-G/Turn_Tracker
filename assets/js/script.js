@@ -164,4 +164,18 @@ function buildOrderList(orderedPlayerDetails) {
     orderList.innerHTML = players;
 }
 
+function startGame(){
+    console.log("start game")
+}
 
+function pauseGame(){
+    console.log("start game")
+}
+
+function endTurn(){
+    console.log("start game")
+}
+
+function endGame(){
+    console.log("start game")
+}
