@@ -106,7 +106,7 @@ function generatePlayerOrder(event) {
 
         if (orderType === "random") {
             shuffle(playerDetails);
-            console.log(playerDetails);
+            console.log(orderedPlayerDetails);
 
         } else if (orderType === "clockwise") {
             let randomNumberRange = playerDetails.length;
@@ -127,9 +127,7 @@ function generatePlayerOrder(event) {
         } else { 
             alert("You havent chosen a invalid order type, please refresh to start again")
         }
-        // console.log("play on!")
-        // let testing = playerDetails[0];
-        // console.log(testing);
+        buildOrderList(orderedPlayerDetails)
     }
 }
 
@@ -147,7 +145,23 @@ function shuffle(playerDetails) {
         playerDetails[m] = playerDetails[i]
         playerDetails[i] = t;
     }
-    return playerDetails;
+    orderedPlayerDetails = playerDetails
+    return orderedPlayerDetails;
+}
+
+function buildOrderList(orderedPlayerDetails) {
+    console.log(orderedPlayerDetails)
+    let players = ""
+    let orderList = document.getElementById("turn-order")
+    let cardinalArray = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth"]
+    //my object keys are capitalised i.e. "Name", should they be?
+    for(i = 0; i < orderedPlayerDetails.length; i++) {
+        players += `
+                    <div id="${orderedPlayerDetails[i].Color}">
+                           <p>${cardinalArray[i]} player: ${orderedPlayerDetails[i].Name}</p>
+                    </div>`
+    }
+    orderList.innerHTML = players;
 }
 
 
