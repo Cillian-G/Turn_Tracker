@@ -51,6 +51,12 @@ let playerDetails = new Array;
 let orderedPlayerDetails = new Array;
 let stopwatch = document.getElementById("stopwatch");
 let roundTracker = 0;
+let minutes = 00;
+let seconds = 00;
+let appendSeconds = document.getElementById("seconds");
+let appendMinutes = document.getElementById("minutes");
+let stopped = false
+let Interval
 
 function numberSubmit(event) {
     event.preventDefault();
@@ -173,6 +179,7 @@ function buildOrderList(orderedPlayerDetails) {
     }
     orderList.innerHTML = players;
 }
+
 // this function will commence the first players turn
 function startTurn(){ 
     document.getElementById("start-game").setAttribute("disabled", "")
@@ -183,6 +190,7 @@ function startTurn(){
         document.getElementById("current-player").innerHTML = `${orderedPlayerDetails[roundTracker].Name}'s`;  
     }
     startStopwatch();
+    console.log(orderedPlayerDetails)
 }
 
 // this function will effectively just pause the stopwatch on the current players turn
@@ -195,15 +203,27 @@ function pauseGame(){
     }
 }
 
-// this function will end a players turn, and start the following players turn
+// this function will end a players turn, and call the startTurn function to start the next player's turn
 function endTurn(){
     
+    let totalSeconds = orderedPlayerDetails[roundTracker].seconds;
+    let totalMinutes = orderedPlayerDetails[roundTracker].minutes;
+    let addedSeconds = appendSeconds.innerText;
+    let addedMinutes = appendMinutes.innerText;
+
+    totalSeconds = totalSeconds + parseInt(addedSeconds);
+    totalMinutes = totalMinutes + parseInt(addedMinutes);
+
+    orderedPlayerDetails[roundTracker].seconds = totalSeconds;
+    orderedPlayerDetails[roundTracker].minutes = totalMinutes;
+
     roundTracker++;
     if (roundTracker === orderedPlayerDetails.length) {
         roundTracker = 0;
     }
     resetStopwatch()
     startTurn()
+    console.log(orderedPlayerDetails)
 }
 
 // this function will end the game and present each players total "turn-time"
@@ -211,12 +231,6 @@ function endGame(){
     console.log("end game")
 }
 
-let minutes = 00;
-let seconds = 00;
-let appendSeconds = document.getElementById("seconds");
-let appendMinutes = document.getElementById("minutes");
-let stopped = false
-let Interval;
 
 function startStopwatch(){
     clearInterval(Interval);
@@ -227,7 +241,6 @@ function stopStopwatch (){
     clearInterval(Interval);
     stopped = true;
 }
-
 
 function resetStopwatch(){
     clearInterval(Interval);
