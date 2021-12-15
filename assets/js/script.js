@@ -108,7 +108,7 @@ function generatePlayerOrder(event) {
             let player = {};
             playerName = document.getElementById("player-details-form").elements[`name${[i]}`].value;
             playerColor = document.getElementById("player-details-form").elements[`colors-id${[i]}`].value;
-            player =  { Name: playerName , Color:playerColor , Time: 0 };
+            player =  { Name: playerName , Color:playerColor , minutes: 0 , seconds: 0 };
             playerDetails.push(player);
         }
         console.log(playerDetails)
@@ -202,5 +202,41 @@ function endTurn(){
 // this function will end the game and present each players total "turn-time"
 function endGame(){
     console.log("end game")
+}
+
+let  minutes = 0;
+let seconds = 0;
+let stop = true;
+
+function startStopwatch(){
+    if (stop === true) {
+        stop = false;
+    }
+}
+
+function runStopwatch() {
+    if(stop === false) {
+        seconds = parseInt(seconds);
+        minutes = parseInt(minutes);
+
+        seconds = seconds + 1;
+        if (seconds === 60) {
+            minutes = minutes + 1;
+            seconds = 0;
+        }
+        if (seconds < 10 || seconds === 0) {
+            seconds = "0" + seconds;
+        }
+        if (sminutes < 10 || minutes === 0) {
+            minutes = "0" + minutes;
+        }
+        stopwatch.innerHTML = minutes + ":" + seconds;
+
+        setTimeout("runStopwatch", 1000)
+    }
+}
+
+function resetTimer(){
+    timer.innerHTML = "00:00"
 }
 
