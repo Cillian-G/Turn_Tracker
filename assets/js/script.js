@@ -123,6 +123,7 @@ function generatePlayerOrder(event) {
                 if (firstPlayerIndex === 0) {
                     console.log("its just a coincidence!!");
                     console.log(playerDetails);
+                    orderedPlayerDetails = playerDetails;
                 } else {
                     let playerDetailsSlice = playerDetails.slice(0, firstPlayerIndex);
                     console.log(playerDetailsSlice);
@@ -180,8 +181,7 @@ function startGame(){
     } else {
         document.getElementById("current-player").innerHTML = `${orderedPlayerDetails[roundTracker].Name}'s`;  
     }
-    document.getElementById("start-game").setAttribute("disabled", "")
-console.log(roundTracker)     
+    document.getElementById("start-game").setAttribute("disabled", "")   
 }
 
 // this function will effectively just pause the stopwatch on the current players turn
@@ -204,39 +204,53 @@ function endGame(){
     console.log("end game")
 }
 
-let  minutes = 0;
-let seconds = 0;
-let stop = true;
+let minutes = 00;
+let seconds = 00;
+let appendSeconds = document.getElementById("seconds");
+let appendMinutes = document.getElementById("minutes");
+
+let Interval;
 
 function startStopwatch(){
-    if (stop === true) {
-        stop = false;
+    clearInterval(Interval);
+    Interval = setInterval(runStopwatch, 1000);
+}
+
+function stopStopwatch (){
+    clearInterval(Interval);
+}
+
+
+function resetStopwatch(){
+    clearInterval(Interval);
+    seconds = "00";
+    minutes = "00";
+    appendSeconds.innerHTML = seconds;
+    appendMinutes.innerHTML = minutes;
+}
+
+function runStopwatch () {
+    seconds++;
+
+    if(tens <= 9){
+        appendSeconds.innerHTML = "0" + seconds;
+      }
+      
+      if (seconds > 9){
+        appendSeconds.innerHTML = seconds;
+        
+      } 
+
+      
+      if (seconds > 60) {
+        console.log("minutes");
+        minutes++;
+        appendMinutes.innerHTML = "0" + minutes;
+        seconds = 0;
+        appendSeconds.innerHTML = "0" + 0;
+      }
+      
+      if (minutes > 9){
+        appendMinutes.innerHTML = minutes;
     }
 }
-
-function runStopwatch() {
-    if(stop === false) {
-        seconds = parseInt(seconds);
-        minutes = parseInt(minutes);
-
-        seconds = seconds + 1;
-        if (seconds === 60) {
-            minutes = minutes + 1;
-            seconds = 0;
-        }
-        if (seconds < 10 || seconds === 0) {
-            seconds = "0" + seconds;
-        }
-        if (sminutes < 10 || minutes === 0) {
-            minutes = "0" + minutes;
-        }
-        stopwatch.innerHTML = minutes + ":" + seconds;
-
-        setTimeout("runStopwatch", 1000)
-    }
-}
-
-function resetTimer(){
-    timer.innerHTML = "00:00"
-}
-
