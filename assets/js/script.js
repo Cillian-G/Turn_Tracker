@@ -174,14 +174,9 @@ function buildOrderList(orderedPlayerDetails) {
     orderList.innerHTML = players;
 }
 // this function will commence the first players turn
-function startGame(){
-    if (orderedPlayerDetails[roundTracker].Name.endsWith("s")){
-        document.getElementById("current-player").innerHTML = `${orderedPlayerDetails[roundTracker].Name}'`;
-
-    } else {
-        document.getElementById("current-player").innerHTML = `${orderedPlayerDetails[roundTracker].Name}'s`;  
-    }
-    document.getElementById("start-game").setAttribute("disabled", "")   
+function startGame(){ 
+    document.getElementById("start-game").setAttribute("disabled", "")
+    endTurn();
 }
 
 // this function will effectively just pause the stopwatch on the current players turn
@@ -191,6 +186,12 @@ function pauseGame(){
 
 // this function will end a players turn, and start the following players turn
 function endTurn(){
+    if (orderedPlayerDetails[roundTracker].Name.endsWith("s")){
+        document.getElementById("current-player").innerHTML = `${orderedPlayerDetails[roundTracker].Name}'`;
+
+    } else {
+        document.getElementById("current-player").innerHTML = `${orderedPlayerDetails[roundTracker].Name}'s`;  
+    }
     roundTracker++;
     if (roundTracker === orderedPlayerDetails.length) {
         roundTracker = 0;
