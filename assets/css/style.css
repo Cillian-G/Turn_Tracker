@@ -1,2 +1,54 @@
 /* Emoji colors for later referenceOrange #FF6723, Brown #6D4534, Green #16C60C, Purple #8D65C5, Yellow #FCE100, Blue #0074B9,
  Red #D22F27, White #FFFFFF, Black #3F3F3F */
+
+/* Universal */
+body {
+    background-color: #FF5A5F;
+    color: #FFFFFF;
+}
+
+.black {
+    background-color: #3F3F3F;
+    color: #FFFFFF;
+}
+
+.brown {
+    background-color: #6D4534;
+    color: #FFFFFF;
+}
+
+.blue {
+    background-color: #0074B9;
+    color: #FFFFFF;
+}
+
+.orange {
+    background-color: #FF6723;
+    color: #333333;
+}
+
+.purple {
+    background-color: #8D65C5;
+    color: #333333;
+}
+
+.red {
+    background-color: #D22F27;
+    color: #FFFFFF;
+}
+
+.white {
+    background-color: #FFFFFF;
+    color: #333333;
+}
+
+.green {
+    background-color: #16C60C;
+    color: #333333;
+}
+
+.yellow {
+    background-color: #FCE100;
+    color: #333333;
+}
+
