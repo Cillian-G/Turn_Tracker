@@ -5,6 +5,7 @@
 body {
     background-color: #FF5A5F;
     color: #FFFFFF;
+    text-align: center;
 }
 
 .black {
@@ -50,5 +51,9 @@ body {
 .yellow {
     background-color: #FCE100;
     color: #333333;
+}
+
+.hidden {
+    display: none;
 }
 
