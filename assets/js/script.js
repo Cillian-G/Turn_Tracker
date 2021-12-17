@@ -10,7 +10,7 @@
 
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("number-selection-form").addEventListener("submit", numberSubmit);
-    stageTwoStyle();
+    
 
     /**
      * The button on the welcome page that hides the welcome/explanation text
@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function(){
     /*The button that gives the text content "random" to a hidden HTML element*/
 
     document.getElementById("random-button").addEventListener("click", function(){
-        document.getElementById("selected-order").innerHTML = "random";
         orderType = "random";
         stageThreeStyle();
     })
@@ -32,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function(){
     /*The button that gives the text content "clockwise" to a hidden HTML element */
      
     document.getElementById("clockwise-button").addEventListener("click", function(){
-        document.getElementById("selected-order").innerHTML = "clockwise";
         orderType = "clockwise"
         stageThreeStyle();
     })
@@ -65,7 +63,7 @@ function numberSubmit(event) {
     event.preventDefault();
 
     numberOfPlayers = document.getElementById("number-selection-form").elements['number'].value;
-    document.getElementById("number-of-players").textContent = numberOfPlayers;
+    // document.getElementById("number-of-players").textContent = numberOfPlayers;
 
     let nameAndColor = "";
 
@@ -89,6 +87,7 @@ function numberSubmit(event) {
             <br>`; 
     }
     document.getElementById("player-details-div").innerHTML = nameAndColor;
+    stageTwoStyle();
 }
 
 function generatePlayerOrder(event) {
@@ -195,6 +194,7 @@ function startTurn(){
     }
     startStopwatch();
     console.log(orderedPlayerDetails)
+    stageFiveStyle();
 }
 
 // this function will effectively just pause the stopwatch on the current players turn
@@ -281,21 +281,26 @@ function runStopwatch () {
 }
 
 function stageTwoStyle() {
-    getElementById("stage-one").toggleAttribute(hidden)
-    getElementById("stage-two").toggleAttribute(hidden)
+    document.getElementById("stage-one").setAttribute("class", "hidden")
+    document.getElementById("stage-two").removeAttribute("class", "hidden")
 }
 
 function stageThreeStyle() {
-    getElementById("stage-two").toggleAttribute(hidden)
-    getElementById("stage-three").toggleAttribute(hidden)
+    document.getElementById("stage-two").setAttribute("class", "hidden")
+    document.getElementById("stage-three").removeAttribute("class", "hidden")
 }
 
 function stageFourStyle(){
-    getElementById("stage-three").toggleAttribute(hidden)
-    getElementById("stage-four").toggleAttribute(hidden)
+    document.getElementById("stage-three").setAttribute("class", "hidden")
+    document.getElementById("stage-four").removeAttribute("class", "hidden")
 }
 
 function stageFiveStyle() {
-    getElementById("stage-four").toggleAttribute(hidden)
-    getElementById("stage-five").toggleAttribute(hidden)
+    document.getElementById("stage-four").setAttribute("class", "hidden")
+    document.getElementById("stage-five").removeAttribute("class", "hidden")
+}
+
+function stageSixStyle() {
+    document.getElementById("stage-five").setAttribute("class", "hidden")
+    document.getElementById("stage-six").removeAttribute("class", "hidden")
 }
