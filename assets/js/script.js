@@ -58,6 +58,7 @@ let appendSeconds = document.getElementById("seconds");
 let appendMinutes = document.getElementById("minutes");
 let stopped = false
 let Interval
+let totalGameTime = 0
 
 function numberSubmit(event) {
     event.preventDefault();
@@ -69,8 +70,9 @@ function numberSubmit(event) {
 
     for(i = 0; i < numberOfPlayers; i++) {
         nameAndColor += `
-            <label for="name${[i]}"></label>        
+            <label for="name${[i]}">Player name</label>        
             <input type="text" name="name" id="name${[i]}" required>
+            <br>
             <label for id="colors${[i]}">Player color</label>
             <select name="color" id="colors-id${[i]}" required>
                 <option value="" disabled selected>Choose color</option>
@@ -204,8 +206,10 @@ function pauseGame(){
     if (stopped){
         stopped = false;
         startStopwatch();
+        document.getElementById("pause-game").innerHTML = "Pause turn";
     } else {
         stopStopwatch();
+        document.getElementById("pause-game").innerHTML = "Unpause turn";
     }
 }
 
@@ -241,12 +245,7 @@ function endGame(){
 }
 
 function showResults() {
-    let table = `<thead>
-                    <tr>
-                        <th></th>
-                        <th>Total time</th>
-                    </tr>
-                </thead>`;
+    // let table = `<tbody>`;
 
     for (i = 0; i < orderedPlayerDetails.length; i++){
         let secondsTally = orderedPlayerDetails[i].seconds;
@@ -255,7 +254,26 @@ function showResults() {
         let minutesTally = orderedPlayerDetails[i].minutes + secondsToMinutes;
         let minutesResult = minutesTally % 60;
         let minutesToHours = Math.floor(minutesTally / 60);
+
+        // table +=   `
+        //                 <tr>
+        //                     <td>${orderedPlayerDetails[i].Name}</td>
+        //                     <td>${minutesToHours}</td>
+        //                     <td>hours</td>
+        //                     <td>${minutesResult}</td>
+        //                     <td>minutes</td>
+        //                     <td>${secondsResult}</td>
+        //                     <td>seconds</td>
+        //                     <td>or</td>
+        //                     <td>${minutesTally}</td>
+        //                     <td>mins</td>
+        //                 </tr>
+        //             `
     }
+
+    table += `</tbody>`
+            console.log(table);
+    document.getElementsByTagName("table")[0].innerHTML = table;
 }
 
 
