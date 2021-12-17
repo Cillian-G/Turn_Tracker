@@ -9,52 +9,61 @@
 </head>
 <body>
     <h1>Turn Tracker</h1>
-    <p>Instructional text</p>
 
-    <form id="number-selection-form">
-        <label for="number-of-players">How many are playing?</label>
-        <input type="number" name="number" min="2" max="9" required>
-        <button data-type="submit" id="start-button">Next</button>
-    </form>
+    <div id="stage-one">
+        <p>Instructional text</p>
 
-    <h3>Clockwise or Random order</h3>
-    <button data-type="submit" id="clockwise-button" data-type="clockwise">Clockwise</button>
-    <button data-type="submit" id="random-button" data-type="random">Random</button>
+        <form id="number-selection-form">
+            <label for="number-of-players">How many are playing?</label>
+            <input type="number" name="number" min="2" max="9" required>
+            <button data-type="submit" id="start-button">Next</button>
+        </form>
 
-    <h3>Enter player names</h3>
+    </div>
 
-    <p>
-        Enter a name and select a color for each player
+    <div id="stage-two">
+        <h3>Clockwise or Random order</h3>
+        <button data-type="submit" id="clockwise-button" data-type="clockwise">Clockwise</button>
+        <button data-type="submit" id="random-button" data-type="random">Random</button>
+    </div>
 
-        <span id="clockwise-instructions">
-        For the clockwise setting to work, make sure to 
-        enter your names in clockwise order around the table.
-        </span>
+    <div id="stage-three">
+        <h3>Enter player names</h3>
+
+        <p>
+            Enter a name and select a color for each player
+
+            <span id="clockwise-instructions">
+                For the clockwise setting to work, make sure to 
+                enter your names in clockwise order around the table.
+            </span>
         
-    </p>
+        </p>
 
-    <form id="player-details-form">
+        <form id="player-details-form">
 
-        <div id="player-details-div"></div>
+            <div id="player-details-div"></div>
 
-        <button id="generate-player-order" data-type="submit">Generate player order</button>
+            <button id="generate-player-order" data-type="submit">Generate player order</button>
 
-    </form>
+        </form>
+    </div>
 
-    <h3>Turn order:</h3>
-    <div id="turn-order"></div>
+    <div id="stage-four">
+        <h3>Turn order:</h3>
+
+        <p>Its <span id="current-player"></span> turn!</p>
+
+        <p><span id="minutes">00</span>:<span id="seconds">00</span></p>
+
+        <button id="start-game">Start game</button>
+        <button id="pause-game">Pause game</button>
+        <button id="end-turn">End Turn</button>
+        <button id="end-game">End game</button>
+
+    </div>
 
     
-    <p>Its <span id="current-player"></span> turn!</p>
-    <p><span id="minutes">00</span>:<span id="seconds">00</span></p>
-
-    <button id="start-game">Start game</button>
-    <button id="pause-game">Pause game</button>
-    <button id="end-turn">End Turn</button>
-    <button id="end-game">End game</button>
-
-    <p id="selected-order"></p>
-    <p id="number-of-players"></p>
     
 
     <script src="assets/js/script.js"></script>
