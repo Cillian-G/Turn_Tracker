@@ -245,7 +245,7 @@ function endGame(){
 }
 
 function showResults() {
-    // let table = `<tbody>`;
+    let results = "";
 
     for (i = 0; i < orderedPlayerDetails.length; i++){
         let secondsTally = orderedPlayerDetails[i].seconds;
@@ -254,26 +254,17 @@ function showResults() {
         let minutesTally = orderedPlayerDetails[i].minutes + secondsToMinutes;
         let minutesResult = minutesTally % 60;
         let minutesToHours = Math.floor(minutesTally / 60);
-
-        // table +=   `
-        //                 <tr>
-        //                     <td>${orderedPlayerDetails[i].Name}</td>
-        //                     <td>${minutesToHours}</td>
-        //                     <td>hours</td>
-        //                     <td>${minutesResult}</td>
-        //                     <td>minutes</td>
-        //                     <td>${secondsResult}</td>
-        //                     <td>seconds</td>
-        //                     <td>or</td>
-        //                     <td>${minutesTally}</td>
-        //                     <td>mins</td>
-        //                 </tr>
-        //             `
+        
+    
+        results += `<p>
+                        ${orderedPlayerDetails[i].Name} took ${minutesToHours}
+                        hours, ${minutesResult} minutes, and ${secondsResult} seconds 
+                        (That's ${minutesTally} minutes)
+                    </p>`;
     }
 
-    table += `</tbody>`
-            console.log(table);
-    document.getElementsByTagName("table")[0].innerHTML = table;
+    
+    document.getElementById("results").innerHTML = results;
 }
 
 
