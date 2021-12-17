@@ -237,6 +237,25 @@ function endGame(){
     console.log("end game")
     document.getElementsByTagName("body")[0].removeAttribute("class");
     stageSixStyle();
+    showResults();
+}
+
+function showResults() {
+    let table = `<thead>
+                    <tr>
+                        <th></th>
+                        <th>Total time</th>
+                    </tr>
+                </thead>`;
+
+    for (i = 0; i < orderedPlayerDetails.length; i++){
+        let secondsTally = orderedPlayerDetails[i].seconds;
+        let secondsResult = secondsTally % 60;
+        let secondsToMinutes = Math.floor(secondsTally / 60);
+        let minutesTally = orderedPlayerDetails[i].minutes + secondsToMinutes;
+        let minutesResult = minutesTally % 60;
+        let minutesToHours = Math.floor(minutesTally / 60);
+    }
 }
 
 
