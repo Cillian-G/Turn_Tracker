@@ -195,6 +195,8 @@ function startTurn(){
     startStopwatch();
     console.log(orderedPlayerDetails)
     stageFiveStyle();
+    document.getElementsByTagName("body")[0].setAttribute("class",`${orderedPlayerDetails[roundTracker].Color}`);
+    console.log(orderedPlayerDetails[roundTracker].Color)
 }
 
 // this function will effectively just pause the stopwatch on the current players turn
@@ -233,6 +235,8 @@ function endTurn(){
 // this function will end the game and present each players total "turn-time"
 function endGame(){
     console.log("end game")
+    document.getElementsByTagName("body")[0].removeAttribute("class");
+    stageSixStyle();
 }
 
 

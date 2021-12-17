@@ -21,13 +21,13 @@
 
     </div>
 
-    <div id="stage-two">
+    <div id="stage-two" class="hidden">
         <h3>Clockwise or Random order</h3>
         <button data-type="submit" id="clockwise-button" data-type="clockwise">Clockwise</button>
         <button data-type="submit" id="random-button" data-type="random">Random</button>
     </div>
 
-    <div id="stage-three">
+    <div id="stage-three" class="hidden">
         <h3>Enter player names</h3>
 
         <p>
@@ -49,17 +49,23 @@
         </form>
     </div>
 
-    <div id="stage-four">
+    <div id="stage-four" class="hidden">
         <h3>Turn order:</h3>
-
+        <div id="turn-order"></div>
+        <button id="start-game">Start game</button>
+    </div> 
+    <div id="stage-five" class="hidden">  
         <p>Its <span id="current-player"></span> turn!</p>
 
         <p><span id="minutes">00</span>:<span id="seconds">00</span></p>
 
-        <button id="start-game">Start game</button>
         <button id="pause-game">Pause game</button>
         <button id="end-turn">End Turn</button>
         <button id="end-game">End game</button>
+    
+    </div>
+
+    <div id="stage-six" class="hidden">
 
     </div>
 
