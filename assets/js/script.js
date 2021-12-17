@@ -9,22 +9,24 @@
 
 
 document.addEventListener("DOMContentLoaded", function(){
-    document.getElementById("number-selection-form").addEventListener("submit", numberSubmit)
+    document.getElementById("number-selection-form").addEventListener("submit", numberSubmit);
+    stageTwoStyle();
 
     /**
      * The button on the welcome page that hides the welcome/explanation text
      *  and presents players with order selection buttons. Currently holding placeholder javascript
      */
-    document.getElementById("start-button").addEventListener("click", function(){
-        console.log("")
-    })
+
+    // document.getElementById("start-button").addEventListener("click", function(){
+    //     console.log("")
+    // }) REMOVE THIS CODE
 
     /*The button that gives the text content "random" to a hidden HTML element*/
 
     document.getElementById("random-button").addEventListener("click", function(){
         document.getElementById("selected-order").innerHTML = "random";
         orderType = "random";
-
+        stageThreeStyle();
     })
 
     /*The button that gives the text content "clockwise" to a hidden HTML element */
@@ -32,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("clockwise-button").addEventListener("click", function(){
         document.getElementById("selected-order").innerHTML = "clockwise";
         orderType = "clockwise"
+        stageThreeStyle();
     })
     
     document.getElementById("player-details-form").addEventListener("submit", generatePlayerOrder);
@@ -103,7 +106,6 @@ function generatePlayerOrder(event) {
        colorSelection.push(document.getElementById("player-details-form").elements[`colors-id${[i]}`].value)
     }
 
-
     if (hasDuplicates(colorSelection)) {
         alert ("Each player must have a unique color");
     } else { 
@@ -143,7 +145,9 @@ function generatePlayerOrder(event) {
         } else { 
             alert("You havent chosen a invalid order type, please refresh to start again")
         }
-        buildOrderList(orderedPlayerDetails)
+        stageFourStyle();
+
+        buildOrderList(orderedPlayerDetails);
     }
 }
 
@@ -274,4 +278,24 @@ function runStopwatch () {
       if (minutes > 9){
         appendMinutes.innerHTML = minutes;
     }
+}
+
+function stageTwoStyle() {
+    getElementById("stage-one").toggleAttribute(hidden)
+    getElementById("stage-two").toggleAttribute(hidden)
+}
+
+function stageThreeStyle() {
+    getElementById("stage-two").toggleAttribute(hidden)
+    getElementById("stage-three").toggleAttribute(hidden)
+}
+
+function stageFourStyle(){
+    getElementById("stage-three").toggleAttribute(hidden)
+    getElementById("stage-four").toggleAttribute(hidden)
+}
+
+function stageFiveStyle() {
+    getElementById("stage-four").toggleAttribute(hidden)
+    getElementById("stage-five").toggleAttribute(hidden)
 }
