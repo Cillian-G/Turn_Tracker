@@ -236,7 +236,7 @@ function endTurn(){
     console.log(orderedPlayerDetails)
 }
 
-// this function will end the game and present each players total "turn-time"
+// this function will end the game and present the user with each players total "turn-time"
 function endGame(){
     console.log("end game")
     document.getElementsByTagName("body")[0].removeAttribute("class");
@@ -267,7 +267,7 @@ function showResults() {
     document.getElementById("results").innerHTML = results;
 }
 
-
+//stopwatch functions 
 function startStopwatch(){
     clearInterval(Interval);
     Interval = setInterval(runStopwatch, 1000);
@@ -312,6 +312,7 @@ function runStopwatch () {
     }
 }
 
+//These functions hide and display each "stage" of the site as they are required
 function stageTwoStyle() {
     document.getElementById("stage-one").setAttribute("class", "hidden")
     document.getElementById("stage-two").removeAttribute("class", "hidden")
