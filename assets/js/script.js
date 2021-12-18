@@ -75,15 +75,15 @@ function numberSubmit(event) {
             <label for id="colors${[i]}">Player color</label>
             <select name="color" id="colors-id${[i]}" required>
                 <option value="" disabled selected>Choose color</option>
-                <option value="orange">🟠Orange</option>
-                <option value="purple">🟣Purple</option>
-                <option value="black">⚫Black</option>
-                <option value="blue">🔵Blue</option>
-                <option value="yellow">🟡Yellow</option>
-                <option value="brown">🟤Brown</option>
-                <option value="white">⚪White</option>
-                <option value="green">🟢Green</option>
-                <option value="red">🔴Red</option>
+                <option class="orange" value="orange">🟠Orange</option>
+                <option class="purple" value="purple">🟣Purple</option>
+                <option class="black" value="black">⚫Black</option>
+                <option class="blue" value="blue">🔵Blue</option>
+                <option class="yellow" value="yellow">🟡Yellow</option>
+                <option class="brown" value="brown">🟤Brown</option>
+                <option class="white" value="white">⚪White</option>
+                <option class="green" value="green">🟢Green</option>
+                <option class="red" value="red">🔴Red</option>
             </select>
             <br>`;
     }
