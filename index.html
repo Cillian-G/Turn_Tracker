@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" sizes="64x64" href="assets/images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Document</title>
+    <title>Turn Tracker</title>
 </head>
 <body>
+    
     <h1>Turn Tracker</h1>
 
-    <div id="stage-one">
+    <div id="stage-one" class="staging-div">
         <p>
             PLACEHOLDER TEXT Welcome to Turn Tracker, an online tool that helps you keep track of whose turn it is when playing board games.
             Turn Tracker also has a handy timer function, so you can keep track of how long the current player's turn has lasted.
@@ -20,19 +22,19 @@
 
         <form id="number-selection-form">
             <label for="number-of-players">How many are playing?</label>
-            <input type="number" name="number" min="2" max="9" required>
+            <input type="number" name="number" id="number-of-players" min="2" max="9" required>
             <button data-type="submit" id="start-button">Next</button>
         </form>
 
     </div>
 
-    <div id="stage-two" class="hidden">
+    <div id="stage-two" class="hidden staging-div">
         <h3>Clockwise or Random order</h3>
-        <button data-type="submit" id="clockwise-button" data-type="clockwise">Clockwise</button>
-        <button data-type="submit" id="random-button" data-type="random">Random</button>
+        <button data-type="submit" id="clockwise-button">Clockwise</button>
+        <button data-type="submit" id="random-button">Random</button>
     </div>
 
-    <div id="stage-three" class="hidden">
+    <div id="stage-three" class="hidden staging-div">
         <h3>Enter player names</h3>
 
         <p>
@@ -54,12 +56,15 @@
         </form>
     </div>
 
-    <div id="stage-four" class="hidden">
+    <div id="stage-four" class="hidden staging-div">
         <h3>Turn order:</h3>
-        <div id="turn-order"></div>
+        <div id="turn-order">
+
+        </div>
+
         <button id="start-game">Start game</button>
     </div> 
-    <div id="stage-five" class="hidden">  
+    <div id="stage-five" class="hidden staging-div">  
         <p>Its <span id="current-player"></span> turn!</p>
 
         <p><span id="minutes">00</span>:<span id="seconds">00</span></p>
@@ -70,11 +75,12 @@
     
     </div>
 
-    <div id="stage-six" class="hidden">
+    <div id="stage-six" class="hidden staging-div">
         <h3>Total time per player</h3>
-        <!-- <table>
-        </table> -->
 
+        <div id="results">
+        </div>
+        
     </div>
 
     
