@@ -8,9 +8,9 @@
 
 
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("number-selection-form").addEventListener("submit", numberSubmit);
-    
+
 
     /**
      * The button on the welcome page that hides the welcome/explanation text
@@ -23,18 +23,18 @@ document.addEventListener("DOMContentLoaded", function(){
 
     /*The button that gives the text content "random" to a hidden HTML element*/
 
-    document.getElementById("random-button").addEventListener("click", function(){
+    document.getElementById("random-button").addEventListener("click", function () {
         orderType = "random";
         stageThreeStyle();
-    })
+    });
 
     /*The button that gives the text content "clockwise" to a hidden HTML element */
-     
-    document.getElementById("clockwise-button").addEventListener("click", function(){
-        orderType = "clockwise"
+
+    document.getElementById("clockwise-button").addEventListener("click", function () {
+        orderType = "clockwise";
         stageThreeStyle();
-    })
-    
+    });
+
     document.getElementById("player-details-form").addEventListener("submit", generatePlayerOrder);
 
     document.getElementById("start-game").addEventListener("click", startTurn);
@@ -44,31 +44,30 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("pause-game").addEventListener("click", pauseGame);
 
     document.getElementById("end-turn").addEventListener("click", endTurn);
-})
+});
 
 let numberOfPlayers = 0;
-let orderType = ""; 
-let playerDetails = new Array;
-let orderedPlayerDetails = new Array;
-let stopwatch = document.getElementById("stopwatch");
+let orderType = "";
+let playerDetails = [];
+let orderedPlayerDetails = [];
 let roundTracker = 0;
-let minutes = 00;
-let seconds = 00;
+let minutes = 0;
+let seconds = 0;
 let appendSeconds = document.getElementById("seconds");
 let appendMinutes = document.getElementById("minutes");
-let stopped = false
-let Interval
-let totalGameTime = 0
+let stopped = false;
+let Interval;
+let totalGameTime = 0;
 
 function numberSubmit(event) {
     event.preventDefault();
 
-    numberOfPlayers = document.getElementById("number-selection-form").elements['number'].value;
+    numberOfPlayers = document.getElementById("number-selection-form").elements.number.value;
     // document.getElementById("number-of-players").textContent = numberOfPlayers;
 
     let nameAndColor = "";
 
-    for(i = 0; i < numberOfPlayers; i++) {
+    for (let i = 0; i < numberOfPlayers; i++) {
         nameAndColor += `
             <label for="name${[i]}">Player name</label>        
             <input type="text" name="name" id="name${[i]}" required>
@@ -86,7 +85,7 @@ function numberSubmit(event) {
                 <option value="green">🟢Green</option>
                 <option value="red">🔴Red</option>
             </select>
-            <br>`; 
+            <br>`;
     }
     document.getElementById("player-details-div").innerHTML = nameAndColor;
     stageTwoStyle();
@@ -100,27 +99,31 @@ function generatePlayerOrder(event) {
     console.log(playerDetails);
 
 
-    
-    let colorSelection = new Array;
-    
-    for (i = 0; i < numberOfPlayers; i++) {
-       colorSelection.push(document.getElementById("player-details-form").elements[`colors-id${[i]}`].value)
+    let colorSelection = [];
+
+    for (let i = 0; i < numberOfPlayers; i++) {
+        colorSelection.push(document.getElementById("player-details-form").elements[`colors-id${[i]}`].value);
     }
 
     if (hasDuplicates(colorSelection)) {
-        alert ("Each player must have a unique color");
-    } else { 
-        playerDetails = [] /* this allows for easier testing, prevents playerDetails from repeatedly adding details */
-        for (i=0; i < numberOfPlayers; i++) {
+        alert("Each player must have a unique color");
+    } else {
+        playerDetails = []; /* this allows for easier testing, prevents playerDetails from repeatedly adding details */
+        for (let i = 0; i < numberOfPlayers; i++) {
             let playerName = "";
             let playerColor = "";
             let player = {};
             playerName = document.getElementById("player-details-form").elements[`name${[i]}`].value;
             playerColor = document.getElementById("player-details-form").elements[`colors-id${[i]}`].value;
-            player =  { Name: playerName , Color:playerColor , minutes: 0 , seconds: 0 };
+            player = {
+                Name: playerName,
+                Color: playerColor,
+                minutes: 0,
+                seconds: 0
+            };
             playerDetails.push(player);
         }
-        console.log(playerDetails)
+        console.log(playerDetails);
 
         if (orderType === "random") {
             shuffle(playerDetails);
@@ -129,22 +132,22 @@ function generatePlayerOrder(event) {
         } else if (orderType === "clockwise") {
             let randomNumberRange = playerDetails.length;
             let firstPlayerIndex = Math.floor(Math.random() * randomNumberRange);
-                if (firstPlayerIndex === 0) {
-                    console.log("its just a coincidence!!");
-                    console.log(playerDetails);
-                    orderedPlayerDetails = playerDetails;
-                } else {
-                    let playerDetailsSlice = playerDetails.slice(0, firstPlayerIndex);
-                    console.log(playerDetailsSlice);
-                    playerDetails.splice(0, firstPlayerIndex);
-                    console.log(playerDetails);
-                    console.log(playerDetailsSlice)
-                    orderedPlayerDetails = playerDetails.concat(playerDetailsSlice);
-                    console.log(orderedPlayerDetails)
-                }
+            if (firstPlayerIndex === 0) {
+                console.log("its just a coincidence!!");
+                console.log(playerDetails);
+                orderedPlayerDetails = playerDetails;
+            } else {
+                let playerDetailsSlice = playerDetails.slice(0, firstPlayerIndex);
+                console.log(playerDetailsSlice);
+                playerDetails.splice(0, firstPlayerIndex);
+                console.log(playerDetails);
+                console.log(playerDetailsSlice);
+                orderedPlayerDetails = playerDetails.concat(playerDetailsSlice);
+                console.log(orderedPlayerDetails);
+            }
 
-        } else { 
-            alert("You havent chosen a invalid order type, please refresh to start again")
+        } else {
+            alert("You havent chosen a invalid order type, please refresh to start again");
         }
         stageFourStyle();
 
@@ -158,52 +161,53 @@ function hasDuplicates(colorSelection) {
 }
 
 function shuffle(playerDetails) {
-    let m = playerDetails.length, t, i;
+    let m = playerDetails.length,
+        t, i;
 
     while (m) {
         i = Math.floor(Math.random() * m--);
         t = playerDetails[m];
-        playerDetails[m] = playerDetails[i]
+        playerDetails[m] = playerDetails[i];
         playerDetails[i] = t;
     }
-    orderedPlayerDetails = playerDetails
+    orderedPlayerDetails = playerDetails;
     return orderedPlayerDetails;
 }
 
 function buildOrderList(orderedPlayerDetails) {
-    console.log(orderedPlayerDetails)
-    let players = ""
-    let orderList = document.getElementById("turn-order")
-    let cardinalArray = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth"]
+    console.log(orderedPlayerDetails);
+    let players = "";
+    let orderList = document.getElementById("turn-order");
+    let cardinalArray = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth"];
     //my object keys are capitalised i.e. "Name", should they be?
-    for(i = 0; i < orderedPlayerDetails.length; i++) {
+    for (let i = 0; i < orderedPlayerDetails.length; i++) {
         players += `
                     <div id="${orderedPlayerDetails[i].Color}">
                            <p>${cardinalArray[i]} player: ${orderedPlayerDetails[i].Name}</p>
-                    </div>`
+                    </div>`;
     }
     orderList.innerHTML = players;
 }
 
 // this function will commence the first players turn
-function startTurn(){ 
-    document.getElementById("start-game").setAttribute("disabled", "")
-    if (orderedPlayerDetails[roundTracker].Name.endsWith("s")){
+function startTurn() {
+    document.getElementById("start-game").setAttribute("disabled", "");
+    if (orderedPlayerDetails[roundTracker].Name.endsWith("s")) {
         document.getElementById("current-player").innerHTML = `${orderedPlayerDetails[roundTracker].Name}'`;
 
     } else {
-        document.getElementById("current-player").innerHTML = `${orderedPlayerDetails[roundTracker].Name}'s`;  
+        document.getElementById("current-player").innerHTML = `${orderedPlayerDetails[roundTracker].Name}'s`;
     }
     startStopwatch();
-    console.log(orderedPlayerDetails)
+    console.log(orderedPlayerDetails);
     stageFiveStyle();
-    document.getElementsByTagName("body")[0].setAttribute("class",`${orderedPlayerDetails[roundTracker].Color}`);
-    console.log(orderedPlayerDetails[roundTracker].Color)
+    document.getElementsByTagName("body")[0].setAttribute("class", `${orderedPlayerDetails[roundTracker].Color}`);
+    console.log(orderedPlayerDetails[roundTracker].Color);
 }
 
 // this function will effectively just pause the stopwatch on the current players turn
-function pauseGame(){
-    if (stopped){
+function pauseGame() {
+    if (stopped) {
         stopped = false;
         startStopwatch();
         document.getElementById("pause-game").innerHTML = "Pause turn";
@@ -214,8 +218,8 @@ function pauseGame(){
 }
 
 // this function will end a players turn, and call the startTurn function to start the next player's turn
-function endTurn(){
-    
+function endTurn() {
+
     let totalSeconds = orderedPlayerDetails[roundTracker].seconds;
     let totalMinutes = orderedPlayerDetails[roundTracker].minutes;
     let addedSeconds = appendSeconds.innerText;
@@ -231,14 +235,15 @@ function endTurn(){
     if (roundTracker === orderedPlayerDetails.length) {
         roundTracker = 0;
     }
-    resetStopwatch()
-    startTurn()
-    console.log(orderedPlayerDetails)
+    resetStopwatch();
+    startTurn();
+    console.log(orderedPlayerDetails);
 }
 
 // this function will end the game and present the user with each players total "turn-time"
-function endGame(){
-    console.log("end game")
+function endGame() {
+    endTurn();
+    console.log("end game");
     document.getElementsByTagName("body")[0].removeAttribute("class");
     stageSixStyle();
     showResults();
@@ -247,7 +252,7 @@ function endGame(){
 function showResults() {
     let results = "";
 
-    for (i = 0; i < orderedPlayerDetails.length; i++){
+    for (let i = 0; i < orderedPlayerDetails.length; i++) {
         let secondsTally = orderedPlayerDetails[i].seconds;
         let secondsResult = secondsTally % 60;
         let secondsToMinutes = Math.floor(secondsTally / 60);
@@ -255,30 +260,71 @@ function showResults() {
         let minutesResult = minutesTally % 60;
         let minutesToHours = Math.floor(minutesTally / 60);
         
-    
+        // minutesTally 
+        if (minutesTally === 0) {
+            minutesTally = "";
+        } else {
+            if (minutesTally === 1) {
+                minutesTally = `(That's ${minutesTally} minute)`;
+            } else {
+                minutesTally = `(That's ${minutesTally} minutes)`;
+            }
+        }
+        // minutesToHours
+        if (minutesToHours === 0) {
+            minutesToHours = "";
+        } else {
+            if (minutesToHours === 1) {
+                minutesToHours = `${minutesToHours} hour, `;
+            } else {
+                minutesToHours = `${minutesToHours} hours, `;
+            }
+        }
+        // minutesResult
+        if (minutesResult === 0) {
+            minutesResult = "";
+        } else {
+            if (minutesResult === 1) {
+                minutesResult = `${minutesResult} minute, `;
+            } else {
+                minutesResult = `${minutesResult} minutes, `;
+            }
+        }
+        // secondsResult
+        if (secondsResult === 0) {
+            secondsResult = "";
+        } else {
+            if (secondsResult === 1) {
+                secondsResult = `${secondsResult} second. `;
+            } else {
+                secondsResult = `${secondsResult} seconds. `;
+            }
+        }
+        console.log(orderedPlayerDetails[i].Color);
         results += `<p>
-                        ${orderedPlayerDetails[i].Name} took ${minutesToHours}
-                        hours, ${minutesResult} minutes, and ${secondsResult} seconds 
-                        (That's ${minutesTally} minutes)
+                        ${orderedPlayerDetails[i].Name} took
+                        ${minutesToHours} ${minutesResult} ${secondsResult}
+                        ${minutesTally}
                     </p>`;
     }
 
-    
+
     document.getElementById("results").innerHTML = results;
 }
 
-//stopwatch functions 
-function startStopwatch(){
+// starts stopwatch and sets interval to one second 
+function startStopwatch() {
     clearInterval(Interval);
     Interval = setInterval(runStopwatch, 1000);
 }
 
-function stopStopwatch (){
+// clear interval and stops stopwatch
+function stopStopwatch() {
     clearInterval(Interval);
     stopped = true;
 }
 
-function resetStopwatch(){
+function resetStopwatch() {
     clearInterval(Interval);
     seconds = "00";
     minutes = "00";
@@ -286,54 +332,54 @@ function resetStopwatch(){
     appendMinutes.innerHTML = minutes;
 }
 
-function runStopwatch () {
+function runStopwatch() {
     seconds++;
 
-    if(seconds <= 9){
+    if (seconds <= 9) {
         appendSeconds.innerHTML = "0" + seconds;
-      }
-      
-      if (seconds > 9){
-        appendSeconds.innerHTML = seconds;
-        
-      } 
+    }
 
-      
-      if (seconds > 60) {
+    if (seconds > 9) {
+        appendSeconds.innerHTML = seconds;
+
+    }
+
+
+    if (seconds > 60) {
         console.log("minutes");
         minutes++;
         appendMinutes.innerHTML = "0" + minutes;
         seconds = 0;
         appendSeconds.innerHTML = "0" + 0;
-      }
-      
-      if (minutes > 9){
+    }
+
+    if (minutes > 9) {
         appendMinutes.innerHTML = minutes;
     }
 }
 
 //These functions hide and display each "stage" of the site as they are required
 function stageTwoStyle() {
-    document.getElementById("stage-one").setAttribute("class", "hidden")
-    document.getElementById("stage-two").removeAttribute("class", "hidden")
+    document.getElementById("stage-one").classList.add("hidden");
+    document.getElementById("stage-two").classList.remove("hidden");
 }
 
 function stageThreeStyle() {
-    document.getElementById("stage-two").setAttribute("class", "hidden")
-    document.getElementById("stage-three").removeAttribute("class", "hidden")
+    document.getElementById("stage-two").classList.add("hidden");
+    document.getElementById("stage-three").classList.remove("hidden");
 }
 
-function stageFourStyle(){
-    document.getElementById("stage-three").setAttribute("class", "hidden")
-    document.getElementById("stage-four").removeAttribute("class", "hidden")
+function stageFourStyle() {
+    document.getElementById("stage-three").classList.add("hidden");
+    document.getElementById("stage-four").classList.remove("hidden");
 }
 
 function stageFiveStyle() {
-    document.getElementById("stage-four").setAttribute("class", "hidden")
-    document.getElementById("stage-five").removeAttribute("class", "hidden")
+    document.getElementById("stage-four").classList.add("hidden");
+    document.getElementById("stage-five").classList.remove("hidden");
 }
 
 function stageSixStyle() {
-    document.getElementById("stage-five").setAttribute("class", "hidden")
-    document.getElementById("stage-six").removeAttribute("class", "hidden")
+    document.getElementById("stage-five").classList.add("hidden");
+    document.getElementById("stage-six").classList.remove("hidden");
 }
