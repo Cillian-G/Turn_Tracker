@@ -22,7 +22,7 @@
 
         <form id="number-selection-form">
             <label for="number-of-players">How many are playing?</label>
-            <input type="number" name="number" id="number-of-players" min="2" max="9" required>
+            <input type="number" name="number" id="number-of-players" min="2" max="9" required autofocus>
             <button data-type="submit" id="start-button">Next</button>
         </form>
 
@@ -70,7 +70,9 @@
         <p><span id="minutes">00</span>:<span id="seconds">00</span></p>
 
         <button id="pause-game">Pause turn</button>
+        <br>
         <button id="end-turn">End turn</button>
+        <br>
         <button id="end-game">End game</button>
     
     </div>
