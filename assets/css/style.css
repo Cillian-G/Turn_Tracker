@@ -1,10 +1,10 @@
-/* Emoji colors for later reference Orange #FF6723, Brown #6D4534, Green #16C60C, Purple #8D65C5, Yellow #FCE100, Blue #0074B9,
- Red #D22F27, White #FFFFFF, Black #3F3F3F */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap');
 
 /* Universal */
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Roboto Slab', serif;
 }
 body {
     background-color: #FF5A5F;
@@ -66,4 +66,13 @@ body {
     position: absolute;
     width: 100%;
 }
+
+.form-padding {
+    margin-top: 1em;
+}
+
+#generate-player-order {
+    margin-top: 3em;
+}
+
 
