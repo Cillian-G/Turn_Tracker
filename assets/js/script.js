@@ -58,6 +58,7 @@ let appendMinutes = document.getElementById("minutes");
 let stopped = false;
 let Interval;
 let totalGameTime = 0;
+let groupTotalTally
 
 function numberSubmit(event) {
     event.preventDefault();
@@ -68,24 +69,27 @@ function numberSubmit(event) {
     let nameAndColor = "";
 
     for (let i = 0; i < numberOfPlayers; i++) {
+        let playerNumber = i + 1;
         nameAndColor += `
-            <label for="name${[i]}">Player name</label>        
-            <input type="text" name="name" id="name${[i]}" required>
-            <br>
-            <label for id="colors${[i]}">Player color</label>
-            <select name="color" id="colors-id${[i]}" required>
-                <option value="" disabled selected>Choose color</option>
-                <option class="orange" value="orange">🟠Orange</option>
-                <option class="purple" value="purple">🟣Purple</option>
-                <option class="black" value="black">⚫Black</option>
-                <option class="blue" value="blue">🔵Blue</option>
-                <option class="yellow" value="yellow">🟡Yellow</option>
-                <option class="brown" value="brown">🟤Brown</option>
-                <option class="white" value="white">⚪White</option>
-                <option class="green" value="green">🟢Green</option>
-                <option class="red" value="red">🔴Red</option>
-            </select>
-            <br>`;
+            <div class="form-padding">
+                <label for="name${[i]}"></label>        
+                <input type="text" name="name" id="name${[i]}" placeholder="Player ${playerNumber} name" required>
+                <br>
+                <label for id="colors${[i]}"></label>
+                <select name="color" id="colors-id${[i]}" required>
+                    <option value="" disabled selected>Player ${playerNumber}'s color</option>
+                    <option class="orange" value="orange">🟠Orange</option>
+                    <option class="purple" value="purple">🟣Purple</option>
+                    <option class="black" value="black">⚫Black</option>
+                    <option class="blue" value="blue">🔵Blue</option>
+                    <option class="yellow" value="yellow">🟡Yellow</option>
+                    <option class="brown" value="brown">🟤Brown</option>
+                    <option class="white" value="white">⚪White</option>
+                    <option class="green" value="green">🟢Green</option>
+                    <option class="red" value="red">🔴Red</option>
+                </select>
+                <br>
+            </div>`;
     }
     document.getElementById("player-details-div").innerHTML = nameAndColor;
     stageTwoStyle();
@@ -179,7 +183,6 @@ function buildOrderList(orderedPlayerDetails) {
     let players = "";
     let orderList = document.getElementById("turn-order");
     let cardinalArray = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth"];
-    //my object keys are capitalised i.e. "Name", should they be?
     for (let i = 0; i < orderedPlayerDetails.length; i++) {
         players += `
                     <div id="${orderedPlayerDetails[i].Color}">
@@ -202,6 +205,17 @@ function startTurn() {
     console.log(orderedPlayerDetails);
     stageFiveStyle();
     document.getElementsByTagName("body")[0].setAttribute("class", `${orderedPlayerDetails[roundTracker].Color}`);
+    let whiteCheck = orderedPlayerDetails[roundTracker].Color;
+    if (whiteCheck === "white") {
+        document.getElementsByClassName("game-button")[0].classList.add("white-button")
+        document.getElementsByClassName("game-button")[1].classList.add("white-button")
+        document.getElementsByClassName("game-button")[2].classList.add("white-button")
+    } else {
+        document.getElementsByClassName("game-button")[0].classList.remove("white-button")
+        document.getElementsByClassName("game-button")[1].classList.remove("white-button")
+        document.getElementsByClassName("game-button")[2].classList.remove("white-button")
+    }
+    console.log(whiteCheck);
     console.log(orderedPlayerDetails[roundTracker].Color);
 }
 
@@ -259,7 +273,8 @@ function showResults() {
         let minutesTally = orderedPlayerDetails[i].minutes + secondsToMinutes;
         let minutesResult = minutesTally % 60;
         let minutesToHours = Math.floor(minutesTally / 60);
-        
+        groupTotalTally += minutesTally;
+
         // minutesTally 
         if (minutesTally === 0) {
             minutesTally = "";
@@ -279,6 +294,7 @@ function showResults() {
             } else {
                 minutesToHours = `${minutesToHours} hours, `;
             }
+
         }
         // minutesResult
         if (minutesResult === 0) {
@@ -292,22 +308,35 @@ function showResults() {
         }
         // secondsResult
         if (secondsResult === 0) {
-            secondsResult = "";
+            secondsResult = ".";
         } else {
             if (secondsResult === 1) {
-                secondsResult = `${secondsResult} second. `;
+                secondsResult = `${secondsResult} second.`;
             } else {
-                secondsResult = `${secondsResult} seconds. `;
+                secondsResult = `${secondsResult} seconds.`;
             }
         }
+
         console.log(orderedPlayerDetails[i].Color);
         results += `<p>
                         ${orderedPlayerDetails[i].Name} took
-                        ${minutesToHours} ${minutesResult} ${secondsResult}
+                        ${minutesToHours} ${minutesResult}${secondsResult}
                         ${minutesTally}
                     </p>`;
     }
+    console.log(groupTotalTally);
+    let groupHours = Math.floor(groupTotalTally / 60);
+    let groupMinutes = groupTotalTally % 60;
 
+    // if (groupHours === 0) {
+    //     groupHours = "";
+    // } else {
+    //     if (groupHours === 1) {
+    //         groupHours = `${groupHours} hour`;
+    //     } else {
+    //         groupHours = `${groupHours} seconds. `;
+    //     }
+    // }
 
     document.getElementById("results").innerHTML = results;
 }
