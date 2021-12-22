@@ -7,36 +7,29 @@
  * **/
 
 
+/* the function that links buttons to their respective functions */
 
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("number-selection-form").addEventListener("submit", numberSubmit);
 
-
-    /**
-     * The button on the welcome page that hides the welcome/explanation text
-     *  and presents players with order selection buttons. Currently holding placeholder javascript
-     */
-
-    // document.getElementById("start-button").addEventListener("click", function(){
-    //     console.log("")
-    // }) REMOVE THIS CODE
-
-    /*The button that gives the text content "random" to a hidden HTML element*/
+    /* The button that sets the orderType varaible to "random", for later use in generating a random turn order */
 
     document.getElementById("random-button").addEventListener("click", function () {
         orderType = "random";
         stageThreeStyle();
     });
 
-    /*The button that gives the text content "clockwise" to a hidden HTML element */
+    /* The button that sets the orderType variable to "clockwise" for later use in creating a clockwise player order */
 
     document.getElementById("clockwise-button").addEventListener("click", function () {
         orderType = "clockwise";
         stageThreeStyle();
     });
 
+    /* the buttons that generates player order and presents it to the user */
     document.getElementById("player-details-form").addEventListener("submit", generatePlayerOrder);
 
+    /* the game-buttons which are used to start the game, pause, and end player turns, as well as ending the game */
     document.getElementById("start-game").addEventListener("click", startTurn);
 
     document.getElementById("end-game").addEventListener("click", endGame);
@@ -60,11 +53,14 @@ let Interval;
 let totalGameTime = 0;
 let groupTotalTally
 
+/**
+ * This function takes the number of players submitted by ther user and generates the player details form
+ * according to this number, before hiding the "landing page" and presenting the user with a choice of order type 
+ */
 function numberSubmit(event) {
     event.preventDefault();
 
     numberOfPlayers = document.getElementById("number-selection-form").elements.number.value;
-    // document.getElementById("number-of-players").textContent = numberOfPlayers;
 
     let nameAndColor = "";
 
@@ -95,6 +91,13 @@ function numberSubmit(event) {
     stageTwoStyle();  
 }
 
+/**
+ * This function generates a turn order for players based on the details entered in the player details form.
+ * First it checks that no color has been selected by more than one player, before creating an array containing
+ * a dictionary for each players details. Then, depending on the users earlier choice, it generates a clockwise
+ * or random player order by re-arranging the order of these dictionaries within their array, and calls on a function
+ * to hide the player details form and display the player order it has generated.  
+ */
 function generatePlayerOrder(event) {
     event.preventDefault();
     console.log("generateplayerorder");
@@ -111,7 +114,7 @@ function generatePlayerOrder(event) {
     if (hasDuplicates(colorSelection)) {
         alert("Each player must have a unique color");
     } else {
-        playerDetails = []; /* this allows for easier testing, prevents playerDetails from repeatedly adding details */
+        playerDetails = []; 
         for (let i = 0; i < numberOfPlayers; i++) {
             let playerName = "";
             let playerColor = "";
@@ -158,11 +161,15 @@ function generatePlayerOrder(event) {
     }
 }
 
-
+/* This function checks whether any colors have been selected by more than one player */
 function hasDuplicates(colorSelection) {
     return (new Set(colorSelection)).size !== colorSelection.length;
 }
 
+/**
+* This function shuffles the order of the playerDetails array to create a random order, retunring the
+* orderedPlayerDetails array
+*/  
 function shuffle(playerDetails) {
     let m = playerDetails.length,
         t, i;
