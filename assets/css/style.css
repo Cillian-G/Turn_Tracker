@@ -9,8 +9,9 @@
 
 a {
     text-decoration: none;
-    color: #FFFFFF;
+    color:inherit;
 }
+
 body {
     background-color: #FF5A5F;
     color: #FFFFFF;
@@ -67,7 +68,7 @@ body {
 }
 
 .staging-div {
-    top: 35%;
+    top: 15%;
     position: absolute;
     width: 100%;
 }
@@ -85,11 +86,11 @@ button {
     background-color: #FFFFFF;
     color: #FF5A5F;
     border: 1px solid #FFFFFF;
-    padding: 0 15px;
+    padding: 5px 15px;
     border: none;
 }
 
-.game-button{
+.game-button {
     margin-top: 1rem;
     padding: 0.5rem 0.5rem;
 }
@@ -101,6 +102,8 @@ button {
 
 #end-game {
     text-decoration: underline;
+    margin-top: 3rem;
+    border: double;
 }
 
 input {
@@ -128,8 +131,29 @@ input:focus, textarea:focus, select:focus {
 
 .order-button {
     margin-bottom: 2rem;
+    margin-top: 1rem;
 }
 
 .options {
     top: 10px;
+}
+
+.page-bottom {
+    padding-bottom: 3rem;
+} 
+
+#turn-order {
+    padding-top: 2rem;
+}
+
+#stopwatch {
+    font-size: 2rem;
+}
+
+.current-player {
+    font-size: 3rem;
+}
+
+.white-heading {
+    color: #FF5A5F;
 }
