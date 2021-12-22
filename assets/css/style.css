@@ -18,6 +18,12 @@ body {
     text-align: center;
 }
 
+p {
+    text-align: center;
+    margin: 10% auto;
+    width: 90%;
+}
+
 .black {
     background-color: #3F3F3F;
     color: #FFFFFF;
@@ -156,4 +162,30 @@ input:focus, textarea:focus, select:focus {
 
 .white-heading {
     color: #FF5A5F;
+}
+
+@media screen and (min-width: 601px) {
+    .staging-div p {
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 993px) {
+    .staging-div {
+        top: 15%;
+    }
+
+    .staging-div p {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 1201px) {
+    .staging-div {
+        top: 35%;
+    }
+
+    .staging-div p {
+        width: 60%;
+    }
 }
