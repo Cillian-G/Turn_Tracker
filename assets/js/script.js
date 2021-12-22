@@ -41,11 +41,10 @@ let appendMinutes = document.getElementById("minutes");
 let stopped = false;
 let Interval;
 let totalGameTime = 0;
-let groupTotalTally
 
 /**
  * takes the number of players submitted by ther user and generates the player details form
- * according to this number, before hiding the "landing page" and presenting the user with a choice of order type 
+ * according to this number, before hiding the "landing page" and presenting the user with a choice of order type
  */
 function numberSubmit(event) {
     event.preventDefault();
@@ -58,7 +57,7 @@ function numberSubmit(event) {
         let playerNumber = i + 1;
         nameAndColor += `
             <div class="form-padding">
-                <label for="name${[i]}"></label>        
+                <label for="name${[i]}"></label>       
                 <input type="text" name="name" id="name${[i]}" placeholder="Player ${playerNumber} name" required>
                 <br>
                 <label for id="colors${[i]}"></label>
@@ -78,7 +77,7 @@ function numberSubmit(event) {
             </div>`;
     }
     document.getElementById("player-details-div").innerHTML = nameAndColor;
-    stageTwoStyle();  
+    stageTwoStyle();
 }
 
 /**
@@ -104,7 +103,7 @@ function generatePlayerOrder(event) {
     if (hasDuplicates(colorSelection)) {
         alert("Each player must have a unique color");
     } else {
-        playerDetails = []; 
+        playerDetails = [];
         for (let i = 0; i < numberOfPlayers; i++) {
             let playerName = "";
             let playerColor = "";
@@ -124,7 +123,7 @@ function generatePlayerOrder(event) {
         if (orderType === "random") {
             shuffle(playerDetails);
             console.log(orderedPlayerDetails);
-        /** 
+        /**
          * this "else if" condition chooses a random first player and then rearranges the array of 
          * "player" dictionaries so that this player is now at index 0, while the clockwise order of the players
          * is maintained.
@@ -142,7 +141,7 @@ function generatePlayerOrder(event) {
                 playerDetails.splice(0, firstPlayerIndex);
                 console.log(playerDetails);
                 console.log(playerDetailsSlice);
-                orderedPlayerDetails = playerDetails.concat(playerDetailsSlice);  
+                orderedPlayerDetails = playerDetails.concat(playerDetailsSlice);
             }
 
         } else {
@@ -214,13 +213,15 @@ function startTurn() {
     document.getElementsByTagName("body")[0].setAttribute("class", `${orderedPlayerDetails[roundTracker].Color}`);
     let whiteCheck = orderedPlayerDetails[roundTracker].Color;
     if (whiteCheck === "white") {
-        document.getElementsByClassName("game-button")[0].classList.add("white-button")
-        document.getElementsByClassName("game-button")[1].classList.add("white-button")
-        document.getElementsByClassName("game-button")[2].classList.add("white-button")
+        document.getElementsByClassName("game-button")[1].classList.add("white-button");
+        document.getElementsByClassName("game-button")[2].classList.add("white-button");
+        document.getElementsByClassName("game-button")[3].classList.add("white-button");
+        document.getElementsByTagName("h1")[0].classList.add("white-heading");
     } else {
-        document.getElementsByClassName("game-button")[0].classList.remove("white-button")
-        document.getElementsByClassName("game-button")[1].classList.remove("white-button")
-        document.getElementsByClassName("game-button")[2].classList.remove("white-button")
+        document.getElementsByClassName("game-button")[1].classList.remove("white-button");
+        document.getElementsByClassName("game-button")[2].classList.remove("white-button");
+        document.getElementsByClassName("game-button")[3].classList.remove("white-button");
+        document.getElementsByTagName("h1")[0].classList.remove("white-heading");
     }
     console.log(whiteCheck);
     console.log(orderedPlayerDetails[roundTracker].Color);
@@ -272,11 +273,13 @@ function endTurn() {
  * calls the stageSixStyle function, and calls the showResults function
  */ 
 function endGame() {
-    endTurn();
-    console.log("end game");
-    document.getElementsByTagName("body")[0].removeAttribute("class");
-    stageSixStyle();
-    showResults();
+    if(confirm("Are you sure you wish to end your game?")) {
+        endTurn();
+        console.log("end game");
+        document.getElementsByTagName("body")[0].removeAttribute("class");
+        stageSixStyle();
+        showResults();
+    }
 }
 
 /**
@@ -293,7 +296,6 @@ function showResults() {
         let minutesTally = orderedPlayerDetails[i].minutes + secondsToMinutes;
         let minutesResult = minutesTally % 60;
         let minutesToHours = Math.floor(minutesTally / 60);
-        groupTotalTally += minutesTally;
 
         // minutesTally 
         if (minutesTally === 0 || minutesTally < 60) {
@@ -350,7 +352,7 @@ function showResults() {
 // starts stopwatch and sets interval to one second 
 function startStopwatch() {
     clearInterval(Interval);
-    Interval = setInterval(runStopwatch, 1);
+    Interval = setInterval(runStopwatch, 1000);
 }
 
 // clears interval and stops stopwatch
@@ -404,7 +406,7 @@ function stageThreeStyle() {
     document.getElementById("stage-two").classList.add("hidden");
     document.getElementById("stage-three").classList.remove("hidden");
     if (orderType === "clockwise") {
-        document.getElementById("clockwise-instructions").classList.remove("hidden")
+        document.getElementById("clockwise-instructions").classList.remove("hidden");
     }
 }
 
