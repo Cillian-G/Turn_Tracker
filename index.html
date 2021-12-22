@@ -9,8 +9,12 @@
     <title>Turn Tracker</title>
 </head>
 <body>
-    
+
+    <!-- header -->
+
     <a href="index.html"><h1 class="test-class">Turn Tracker</h1></a>
+
+    <!-- stage one - welcome text and player number form -->
 
     <div id="stage-one" class="staging-div page-bottom">
         <p>
@@ -30,6 +34,8 @@
 
     </div>
 
+    <!-- stage two - order choice -->
+
     <div id="stage-two" class="hidden staging-div page-bottom">
         <p>
             If players are already seated, selecting this setting will pick a random first player and will follow a turn 
@@ -42,6 +48,8 @@
         </p>
         <button data-type="submit" id="random-button" class="order-button">Random</button>
     </div>
+
+    <!-- stage three - player details form -->
 
     <div id="stage-three" class="hidden staging-div page-bottom">
 
@@ -64,6 +72,8 @@
         </form>
     </div>
 
+    <!-- stage four - turn order list -->
+
     <div id="stage-four" class="hidden staging-div page-bottom">
         <h3>Turn order:</h3>
         <div id="turn-order">
@@ -72,6 +82,9 @@
 
         <button id="start-game" class="game-button">Start game</button>
     </div> 
+
+    <!-- stage five - current player info and stopwatch -->
+
     <div id="stage-five" class="hidden staging-div page-bottom">  
         <p class="current-player">Its <span id="current-player"></span> turn!</p>
 
@@ -85,11 +98,12 @@
     
     </div>
 
+    <!-- stage six - results -->
+
     <div id="stage-six" class="hidden staging-div page-bottom">
         <h3>Total time per player</h3>
 
-        <div id="results">
-        </div>
+        <div id="results"></div>
         
     </div>
 
