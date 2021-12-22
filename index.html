@@ -10,9 +10,9 @@
 </head>
 <body>
     
-    <a href="index.html"><h1>Turn Tracker</h1></a>
+    <a href="index.html"><h1 class="test-class">Turn Tracker</h1></a>
 
-    <div id="stage-one" class="staging-div">
+    <div id="stage-one" class="staging-div page-bottom">
         <p>
             Welcome to Turn Tracker, an online tool that helps you keep your board game night on track. Turn Tracker 
             randomly selects a player to take the first turn, and will track whose turn it is throughout the game. 
@@ -23,30 +23,30 @@
 
         <form id="number-selection-form">
             <label for="number-of-players">How many are playing?</label>
+            <br id="stage-one-break">
             <input type="number" name="number" id="number-of-players" min="2" max="9" required autofocus>
             <button data-type="submit" id="start-button">Next</button>
         </form>
 
     </div>
 
-    <div id="stage-two" class="hidden staging-div">
+    <div id="stage-two" class="hidden staging-div page-bottom">
         <p>
-            If players are already seated, selecting this setting will pick a random first player and will then 
-            allow you to play in the order in which you are already seated.
+            If players are already seated, selecting this setting will pick a random first player and will follow a turn 
+            order that matches the order that you're sitting in.
         </p>
         <button data-type="submit" id="clockwise-button" class="order-button">Clockwise</button>
         <p>
             If players are not yet seated, or are not particularly attached to their current seats, 
-            selecting the random option will generate a completely random player order. 
+            selecting the random option will generate a completely random turn order. 
         </p>
         <button data-type="submit" id="random-button" class="order-button">Random</button>
     </div>
 
-    <div id="stage-three" class="hidden staging-div">
-        <h3>Enter player names</h3>
+    <div id="stage-three" class="hidden staging-div page-bottom">
 
         <p>
-            Enter a name and select a color for each player
+            Enter a name and color for each player
 
             <span id="clockwise-instructions" class="hidden">
                 For the clockwise setting to work, make sure to 
@@ -64,18 +64,18 @@
         </form>
     </div>
 
-    <div id="stage-four" class="hidden staging-div">
+    <div id="stage-four" class="hidden staging-div page-bottom">
         <h3>Turn order:</h3>
         <div id="turn-order">
 
         </div>
 
-        <button id="start-game">Start game</button>
+        <button id="start-game" class="game-button">Start game</button>
     </div> 
-    <div id="stage-five" class="hidden staging-div">  
-        <p>Its <span id="current-player"></span> turn!</p>
+    <div id="stage-five" class="hidden staging-div page-bottom">  
+        <p class="current-player">Its <span id="current-player"></span> turn!</p>
 
-        <p><span id="minutes">00</span>:<span id="seconds">00</span></p>
+        <p id="stopwatch"><span id="minutes">00</span>:<span id="seconds">00</span></p>
 
         <button id="pause-game" class="game-button">Pause turn</button>
         <br>
@@ -85,16 +85,13 @@
     
     </div>
 
-    <div id="stage-six" class="hidden staging-div">
+    <div id="stage-six" class="hidden staging-div page-bottom">
         <h3>Total time per player</h3>
 
         <div id="results">
         </div>
         
     </div>
-
-    
-    
 
     <script src="assets/js/script.js"></script>
 </body>
