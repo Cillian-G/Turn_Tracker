@@ -331,9 +331,9 @@ function showResults() {
             minutesResult = "";
         } else {
             if (minutesResult === 1) {
-                minutesResult = `${minutesResult} minute, `;
+                minutesResult = `${minutesResult} minute`;
             } else {
-                minutesResult = `${minutesResult} minutes, `;
+                minutesResult = `${minutesResult} minutes`;
             }
         }
         // secondsResult
@@ -341,9 +341,9 @@ function showResults() {
             secondsResult = ".";
         } else {
             if (secondsResult === 1) {
-                secondsResult = `${secondsResult} second.`;
+                secondsResult = `, ${secondsResult} second.`;
             } else {
-                secondsResult = `${secondsResult} seconds.`;
+                secondsResult = `, ${secondsResult} seconds.`;
             }
         }
 
@@ -360,7 +360,7 @@ function showResults() {
 // starts stopwatch and sets interval to one second 
 function startStopwatch() {
     clearInterval(Interval);
-    Interval = setInterval(runStopwatch, 10);
+    Interval = setInterval(runStopwatch, 1);
 }
 
 // clear interval and stops stopwatch
