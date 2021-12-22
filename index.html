@@ -14,10 +14,11 @@
 
     <div id="stage-one" class="staging-div">
         <p>
-            PLACEHOLDER TEXT Welcome to Turn Tracker, an online tool that helps you keep track of whose turn it is when playing board games.
-            Turn Tracker also has a handy timer function, so you can keep track of how long the current player's turn has lasted.
-            At the end of your game, you'll get a tally of how much time each player took over the course of the game, so you can finally
-            work out which players are dragging their feet and slowing down the game!
+            Welcome to Turn Tracker, an online tool that helps you keep your board game night on track. Turn Tracker 
+            randomly selects a player to take the first turn, and will track whose turn it is throughout the game. 
+            Turn Tracker also has a handy timer function, so you can keep track of how long the current player's turn 
+            has lasted. At the end of your game, you'll get a tally of how much time each player took over the course 
+            of the game, so you can finally work out which players are dragging their feet and slowing down the game!
         </p>
 
         <form id="number-selection-form">
@@ -29,17 +30,16 @@
     </div>
 
     <div id="stage-two" class="hidden staging-div">
-        <h3>Clockwise or Random order</h3>
         <p>
             If players are already seated, selecting this setting will pick a random first player and will then 
             allow you to play in the order in which you are already seated.
         </p>
-        <button data-type="submit" id="clockwise-button">Clockwise</button>
+        <button data-type="submit" id="clockwise-button" class="order-button">Clockwise</button>
         <p>
             If players are not yet seated, or are not particularly attached to their current seats, 
             selecting the random option will generate a completely random player order. 
         </p>
-        <button data-type="submit" id="random-button">Random</button>
+        <button data-type="submit" id="random-button" class="order-button">Random</button>
     </div>
 
     <div id="stage-three" class="hidden staging-div">
@@ -48,7 +48,7 @@
         <p>
             Enter a name and select a color for each player
 
-            <span id="clockwise-instructions">
+            <span id="clockwise-instructions" class="hidden">
                 For the clockwise setting to work, make sure to 
                 enter your names in clockwise order around the table.
             </span>
