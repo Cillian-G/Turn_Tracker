@@ -92,7 +92,7 @@ function numberSubmit(event) {
             </div>`;
     }
     document.getElementById("player-details-div").innerHTML = nameAndColor;
-    stageTwoStyle();
+    stageTwoStyle();  
 }
 
 function generatePlayerOrder(event) {
@@ -101,7 +101,6 @@ function generatePlayerOrder(event) {
 
     console.log(numberOfPlayers);
     console.log(playerDetails);
-
 
     let colorSelection = [];
 
@@ -396,6 +395,9 @@ function stageTwoStyle() {
 function stageThreeStyle() {
     document.getElementById("stage-two").classList.add("hidden");
     document.getElementById("stage-three").classList.remove("hidden");
+    if (orderType === clockwise) {
+        document.getElementById("clockwise-instructions").classList.remove("hidden")
+    }
 }
 
 function stageFourStyle() {
