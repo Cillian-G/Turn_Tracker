@@ -134,7 +134,11 @@ function generatePlayerOrder(event) {
         if (orderType === "random") {
             shuffle(playerDetails);
             console.log(orderedPlayerDetails);
-
+        /** 
+         * this "else if" condition chooses a random first player and then rearranges the array of 
+         * "player" dictionaries so that this player is now at index 0, while the clockwise order of the players
+         * is maintained.
+         */
         } else if (orderType === "clockwise") {
             let randomNumberRange = playerDetails.length;
             let firstPlayerIndex = Math.floor(Math.random() * randomNumberRange);
@@ -148,8 +152,7 @@ function generatePlayerOrder(event) {
                 playerDetails.splice(0, firstPlayerIndex);
                 console.log(playerDetails);
                 console.log(playerDetailsSlice);
-                orderedPlayerDetails = playerDetails.concat(playerDetailsSlice);
-                console.log(orderedPlayerDetails);
+                orderedPlayerDetails = playerDetails.concat(playerDetailsSlice);  
             }
 
         } else {
@@ -167,7 +170,7 @@ function hasDuplicates(colorSelection) {
 }
 
 /**
-* This function shuffles the order of the playerDetails array to create a random order, retunring the
+* This function shuffles the order of the playerDetails array to create a random order, returning the
 * orderedPlayerDetails array
 */  
 function shuffle(playerDetails) {
@@ -184,6 +187,10 @@ function shuffle(playerDetails) {
     return orderedPlayerDetails;
 }
 
+/**
+ * This function creates the turn order listing presented to the user after they click "Generate player order", 
+ * by iterating over the orderedPlayerDetails array with another array of cardinal numbers
+ */
 function buildOrderList(orderedPlayerDetails) {
     console.log(orderedPlayerDetails);
     let players = "";
@@ -198,7 +205,11 @@ function buildOrderList(orderedPlayerDetails) {
     orderList.innerHTML = players;
 }
 
-// this function will commence the first players turn
+/** 
+ * this function commence the next players turn, or the first players turn if called upon by the "start game" button.
+ * It will start the stopwatch for the players turn, set the HTML to display "Its (current player)'(s) turn",
+ * set the background color to their player color, and ensure that buttons are legible on white backgrounds
+ */
 function startTurn() {
     document.getElementById("start-game").setAttribute("disabled", "");
     if (orderedPlayerDetails[roundTracker].Name.endsWith("s")) {
@@ -225,7 +236,10 @@ function startTurn() {
     console.log(orderedPlayerDetails[roundTracker].Color);
 }
 
-// this function will effectively just pause the stopwatch on the current players turn
+/** 
+ * this function pauses and unpauses the stopwatch on the current players turn, and toggles the pause/unpause
+ * buttons's text content accordingly
+ */  
 function pauseGame() {
     if (stopped) {
         stopped = false;
@@ -237,7 +251,10 @@ function pauseGame() {
     }
 }
 
-// this function will end a players turn, and call the startTurn function to start the next player's turn
+/** 
+ * this function will end a players turn, add their stopwatch time to the times recorded in their dictionary,
+ *  augment the roundTracker variable accordingly, and call the startTurn function to start the next player's turn
+ */ 
 function endTurn() {
 
     let totalSeconds = orderedPlayerDetails[roundTracker].seconds;
@@ -260,7 +277,10 @@ function endTurn() {
     console.log(orderedPlayerDetails);
 }
 
-// this function will end the game and present the user with each players total "turn-time"
+/**
+ * this function will end the current turn,set the background color back to default,
+ * cal the stageSixStyle function, and call the showResults function
+ */ 
 function endGame() {
     endTurn();
     console.log("end game");
@@ -269,6 +289,10 @@ function endGame() {
     showResults();
 }
 
+/**
+ * This function generates a grammatically correct listing of the total time each player spent on their turns,
+ * as well as the total duration of the game 
+ */
 function showResults() {
     let results = "";
 
@@ -282,7 +306,7 @@ function showResults() {
         groupTotalTally += minutesTally;
 
         // minutesTally 
-        if (minutesTally === 0) {
+        if (minutesTally === 0 || minutesTally < 60) {
             minutesTally = "";
         } else {
             if (minutesTally === 1) {
@@ -330,27 +354,13 @@ function showResults() {
                         ${minutesTally}
                     </p>`;
     }
-    console.log(groupTotalTally);
-    let groupHours = Math.floor(groupTotalTally / 60);
-    let groupMinutes = groupTotalTally % 60;
-
-    // if (groupHours === 0) {
-    //     groupHours = "";
-    // } else {
-    //     if (groupHours === 1) {
-    //         groupHours = `${groupHours} hour`;
-    //     } else {
-    //         groupHours = `${groupHours} seconds. `;
-    //     }
-    // }
-
     document.getElementById("results").innerHTML = results;
 }
 
 // starts stopwatch and sets interval to one second 
 function startStopwatch() {
     clearInterval(Interval);
-    Interval = setInterval(runStopwatch, 1000);
+    Interval = setInterval(runStopwatch, 10);
 }
 
 // clear interval and stops stopwatch
