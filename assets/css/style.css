@@ -20,7 +20,7 @@ body {
 
 p {
     text-align: center;
-    margin: 10% auto;
+    margin: auto;
     width: 90%;
 }
 
@@ -172,7 +172,7 @@ input:focus, textarea:focus, select:focus {
 
 @media screen and (min-width: 993px) {
     .staging-div {
-        top: 15%;
+        top: 20%;
     }
 
     .staging-div p {
