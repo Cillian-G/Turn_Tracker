@@ -334,18 +334,19 @@ function showResults() {
     document.getElementById("results").innerHTML = results;
 }
 
-// starts stopwatch and sets interval to one second 
+/* starts stopwatch and sets interval to one second */
 function startStopwatch() {
     clearInterval(Interval);
     Interval = setInterval(runStopwatch, 1000);
 }
 
-// clears interval and stops stopwatch
+/*  clears interval and stops stopwatch */
 function stopStopwatch() {
     clearInterval(Interval);
     stopped = true;
 }
 
+/* sets the stopwatch minutes and seconds variables back to zero */
 function resetStopwatch() {
     clearInterval(Interval);
     seconds = "00";
@@ -354,6 +355,10 @@ function resetStopwatch() {
     appendMinutes.innerHTML = minutes;
 }
 
+/** 
+ * increases the second counter by 1 every 1000 milliseconds, resets the second counter once it hits 60 
+ * and increases the minute counter by 1 each time this happens. 
+*/
 function runStopwatch() {
     seconds++;
 
@@ -364,7 +369,6 @@ function runStopwatch() {
     if (seconds > 9) {
         appendSeconds.innerHTML = seconds;
     }
-
 
     if (seconds > 60) {
         minutes++;
