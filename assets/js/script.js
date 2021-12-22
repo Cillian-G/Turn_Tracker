@@ -1,26 +1,16 @@
 /* jshint esversion: 8 */
 
-/**
- * BUTTON NAME REFERENCE LIST
- * start-button clockwise-selection, random-selection, 
- * generate-player-order, start-game, pause-turn, end-turn, end-game
- * **/
-
-
-/* the function that links buttons to their respective functions */
-
+/* links buttons to their respective functions */
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("number-selection-form").addEventListener("submit", numberSubmit);
 
     /* The button that sets the orderType varaible to "random", for later use in generating a random turn order */
-
     document.getElementById("random-button").addEventListener("click", function () {
         orderType = "random";
         stageThreeStyle();
     });
 
     /* The button that sets the orderType variable to "clockwise" for later use in creating a clockwise player order */
-
     document.getElementById("clockwise-button").addEventListener("click", function () {
         orderType = "clockwise";
         stageThreeStyle();
@@ -54,7 +44,7 @@ let totalGameTime = 0;
 let groupTotalTally
 
 /**
- * This function takes the number of players submitted by ther user and generates the player details form
+ * takes the number of players submitted by ther user and generates the player details form
  * according to this number, before hiding the "landing page" and presenting the user with a choice of order type 
  */
 function numberSubmit(event) {
@@ -92,7 +82,7 @@ function numberSubmit(event) {
 }
 
 /**
- * This function generates a turn order for players based on the details entered in the player details form.
+ * generates a turn order for players based on the details entered in the player details form.
  * First it checks that no color has been selected by more than one player, before creating an array containing
  * a dictionary for each players details. Then, depending on the users earlier choice, it generates a clockwise
  * or random player order by re-arranging the order of these dictionaries within their array, and calls on a function
@@ -164,13 +154,13 @@ function generatePlayerOrder(event) {
     }
 }
 
-/* This function checks whether any colors have been selected by more than one player */
+/*  checks whether any colors have been selected by more than one player */
 function hasDuplicates(colorSelection) {
     return (new Set(colorSelection)).size !== colorSelection.length;
 }
 
 /**
-* This function shuffles the order of the playerDetails array to create a random order, returning the
+*  shuffles the order of the playerDetails array to create a random order, returning the
 * orderedPlayerDetails array
 */  
 function shuffle(playerDetails) {
@@ -188,7 +178,7 @@ function shuffle(playerDetails) {
 }
 
 /**
- * This function creates the turn order listing presented to the user after they click "Generate player order", 
+ * creates the turn order listing presented to the user after they click "Generate player order", 
  * by iterating over the orderedPlayerDetails array with another array of cardinal numbers
  */
 function buildOrderList(orderedPlayerDetails) {
@@ -206,8 +196,8 @@ function buildOrderList(orderedPlayerDetails) {
 }
 
 /** 
- * this function commence the next players turn, or the first players turn if called upon by the "start game" button.
- * It will start the stopwatch for the players turn, set the HTML to display "Its (current player)'(s) turn",
+ * commences the next players turn, or the first players turn if called upon by the "start game" button.
+ * It will then start the stopwatch for the players turn, set the HTML to display "Its (current player)'(s) turn",
  * set the background color to their player color, and ensure that buttons are legible on white backgrounds
  */
 function startTurn() {
@@ -237,7 +227,7 @@ function startTurn() {
 }
 
 /** 
- * this function pauses and unpauses the stopwatch on the current players turn, and toggles the pause/unpause
+ * pauses and unpauses the stopwatch on the current players turn, and toggles the pause/unpause
  * buttons's text content accordingly
  */  
 function pauseGame() {
@@ -252,8 +242,8 @@ function pauseGame() {
 }
 
 /** 
- * this function will end a players turn, add their stopwatch time to the times recorded in their dictionary,
- *  augment the roundTracker variable accordingly, and call the startTurn function to start the next player's turn
+ *  ends a players turn, adds their stopwatch time to the times recorded in their dictionary,
+ *  augments the roundTracker variable accordingly, and calls the startTurn function to start the next player's turn
  */ 
 function endTurn() {
 
@@ -278,8 +268,8 @@ function endTurn() {
 }
 
 /**
- * this function will end the current turn,set the background color back to default,
- * cal the stageSixStyle function, and call the showResults function
+ * ends the current turn, sets the background color back to default,
+ * calls the stageSixStyle function, and calls the showResults function
  */ 
 function endGame() {
     endTurn();
@@ -290,7 +280,7 @@ function endGame() {
 }
 
 /**
- * This function generates a grammatically correct listing of the total time each player spent on their turns,
+ * generates a grammatically correct listing of the total time each player spent on their turns,
  * as well as the total duration of the game 
  */
 function showResults() {
@@ -363,7 +353,7 @@ function startStopwatch() {
     Interval = setInterval(runStopwatch, 1);
 }
 
-// clear interval and stops stopwatch
+// clears interval and stops stopwatch
 function stopStopwatch() {
     clearInterval(Interval);
     stopped = true;
@@ -403,12 +393,13 @@ function runStopwatch() {
     }
 }
 
-//These functions hide and display each "stage" of the site as they are required
+/* hides style stage one and displays stage two*/
 function stageTwoStyle() {
     document.getElementById("stage-one").classList.add("hidden");
     document.getElementById("stage-two").classList.remove("hidden");
 }
 
+/* hides style stage two and displays stage three*/
 function stageThreeStyle() {
     document.getElementById("stage-two").classList.add("hidden");
     document.getElementById("stage-three").classList.remove("hidden");
@@ -417,16 +408,19 @@ function stageThreeStyle() {
     }
 }
 
+/* hides style stage three and displays stage four*/
 function stageFourStyle() {
     document.getElementById("stage-three").classList.add("hidden");
     document.getElementById("stage-four").classList.remove("hidden");
 }
 
+/* hides style stage four and displays stage five*/
 function stageFiveStyle() {
     document.getElementById("stage-four").classList.add("hidden");
     document.getElementById("stage-five").classList.remove("hidden");
 }
 
+/* hides style stage five and displays stage six*/
 function stageSixStyle() {
     document.getElementById("stage-five").classList.add("hidden");
     document.getElementById("stage-six").classList.remove("hidden");
