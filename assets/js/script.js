@@ -89,10 +89,6 @@ function numberSubmit(event) {
  */
 function generatePlayerOrder(event) {
     event.preventDefault();
-    console.log("generateplayerorder");
-
-    console.log(numberOfPlayers);
-    console.log(playerDetails);
 
     let colorSelection = [];
 
@@ -118,11 +114,10 @@ function generatePlayerOrder(event) {
             };
             playerDetails.push(player);
         }
-        console.log(playerDetails);
 
         if (orderType === "random") {
             shuffle(playerDetails);
-            console.log(orderedPlayerDetails);
+
         /**
          * this "else if" condition chooses a random first player and then rearranges the array of 
          * "player" dictionaries so that this player is now at index 0, while the clockwise order of the players
@@ -132,15 +127,12 @@ function generatePlayerOrder(event) {
             let randomNumberRange = playerDetails.length;
             let firstPlayerIndex = Math.floor(Math.random() * randomNumberRange);
             if (firstPlayerIndex === 0) {
-                console.log("its just a coincidence!!");
-                console.log(playerDetails);
                 orderedPlayerDetails = playerDetails;
             } else {
                 let playerDetailsSlice = playerDetails.slice(0, firstPlayerIndex);
-                console.log(playerDetailsSlice);
+                
                 playerDetails.splice(0, firstPlayerIndex);
-                console.log(playerDetails);
-                console.log(playerDetailsSlice);
+
                 orderedPlayerDetails = playerDetails.concat(playerDetailsSlice);
             }
 
@@ -181,7 +173,6 @@ function shuffle(playerDetails) {
  * by iterating over the orderedPlayerDetails array with another array of cardinal numbers
  */
 function buildOrderList(orderedPlayerDetails) {
-    console.log(orderedPlayerDetails);
     let players = "";
     let orderList = document.getElementById("turn-order");
     let cardinalArray = ["First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth"];
@@ -208,7 +199,6 @@ function startTurn() {
         document.getElementById("current-player").innerHTML = `${orderedPlayerDetails[roundTracker].Name}'s`;
     }
     startStopwatch();
-    console.log(orderedPlayerDetails);
     stageFiveStyle();
     document.getElementsByTagName("body")[0].setAttribute("class", `${orderedPlayerDetails[roundTracker].Color}`);
     let whiteCheck = orderedPlayerDetails[roundTracker].Color;
@@ -223,8 +213,6 @@ function startTurn() {
         document.getElementsByClassName("game-button")[3].classList.remove("white-button");
         document.getElementsByTagName("h1")[0].classList.remove("white-heading");
     }
-    console.log(whiteCheck);
-    console.log(orderedPlayerDetails[roundTracker].Color);
 }
 
 /** 
@@ -265,7 +253,6 @@ function endTurn() {
     }
     resetStopwatch();
     startTurn();
-    console.log(orderedPlayerDetails);
 }
 
 /**
@@ -275,7 +262,6 @@ function endTurn() {
 function endGame() {
     if(confirm("Are you sure you wish to end your game?")) {
         endTurn();
-        console.log("end game");
         document.getElementsByTagName("body")[0].removeAttribute("class");
         stageSixStyle();
         showResults();
@@ -339,7 +325,6 @@ function showResults() {
             }
         }
 
-        console.log(orderedPlayerDetails[i].Color);
         results += `<p>
                         ${orderedPlayerDetails[i].Name} took
                         ${minutesToHours} ${minutesResult}${secondsResult}
@@ -378,12 +363,10 @@ function runStopwatch() {
 
     if (seconds > 9) {
         appendSeconds.innerHTML = seconds;
-
     }
 
 
     if (seconds > 60) {
-        console.log("minutes");
         minutes++;
         appendMinutes.innerHTML = "0" + minutes;
         seconds = 0;
