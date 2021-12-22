@@ -403,7 +403,7 @@ function stageTwoStyle() {
 function stageThreeStyle() {
     document.getElementById("stage-two").classList.add("hidden");
     document.getElementById("stage-three").classList.remove("hidden");
-    if (orderType === clockwise) {
+    if (orderType === "clockwise") {
         document.getElementById("clockwise-instructions").classList.remove("hidden")
     }
 }
