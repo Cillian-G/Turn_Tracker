@@ -425,5 +425,6 @@ function stageFiveStyle() {
 /* hides style stage five and displays stage six*/
 function stageSixStyle() {
     document.getElementById("stage-five").classList.add("hidden");
+    document.getElementsByTagName("h1")[0].classList.remove("white-heading");
     document.getElementById("stage-six").classList.remove("hidden");
 }
