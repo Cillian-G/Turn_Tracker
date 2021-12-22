@@ -1,15 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap');
 
 /* Universal */
+
 * {
     margin: 0;
     padding: 0;
     font-family: 'Roboto Slab', serif;
-}
-
-a {
-    text-decoration: none;
-    color:inherit;
 }
 
 body {
@@ -18,66 +14,30 @@ body {
     text-align: center;
 }
 
+/* page title */
+
+a {
+    text-decoration: none;
+    color:inherit;
+}
+
+.white-heading {
+    color: #FF5A5F;
+}
+
+/* page structure */
+
 p {
     text-align: center;
     margin: auto;
     width: 90%;
 }
 
-.black {
-    background-color: #3F3F3F;
-    color: #FFFFFF;
+.page-bottom {
+    padding-bottom: 3rem;
 }
 
-.brown {
-    background-color: #6D4534;
-    color: #FFFFFF;
-}
-
-.blue {
-    background-color: #0074B9;
-    color: #FFFFFF;
-}
-
-.orange {
-    background-color: #FF6723;
-    color: #333333;
-}
-
-.purple {
-    background-color: #8D65C5;
-    color: #333333;
-}
-
-.red {
-    background-color: #D22F27;
-    color: #FFFFFF;
-}
-
-.white {
-    background-color: #FFFFFF;
-    color: #333333;
-}
-
-.green {
-    background-color: #16C60C;
-    color: #333333;
-}
-
-.yellow {
-    background-color: #FCE100;
-    color: #333333;
-}
-
-.hidden {
-    display: none;
-}
-
-.staging-div {
-    top: 15%;
-    position: absolute;
-    width: 100%;
-}
+/* form items */
 
 .form-padding {
     margin-top: 1em;
@@ -142,15 +102,72 @@ input:focus, textarea:focus, select:focus {
 
 .options {
     top: 10px;
-}
-
-.page-bottom {
-    padding-bottom: 3rem;
 } 
 
 #turn-order {
     padding-top: 2rem;
 }
+
+/* Player colour classes */
+
+.black {
+    background-color: #3F3F3F;
+    color: #FFFFFF;
+}
+
+.brown {
+    background-color: #6D4534;
+    color: #FFFFFF;
+}
+
+.blue {
+    background-color: #0074B9;
+    color: #FFFFFF;
+}
+
+.orange {
+    background-color: #FF6723;
+    color: #333333;
+}
+
+.purple {
+    background-color: #8D65C5;
+    color: #333333;
+}
+
+.red {
+    background-color: #D22F27;
+    color: #FFFFFF;
+}
+
+.white {
+    background-color: #FFFFFF;
+    color: #333333;
+}
+
+.green {
+    background-color: #16C60C;
+    color: #333333;
+}
+
+.yellow {
+    background-color: #FCE100;
+    color: #333333;
+}
+
+/* staging style rules */
+
+.hidden {
+    display: none;
+}
+
+.staging-div {
+    top: 15%;
+    position: absolute;
+    width: 100%;
+}
+
+/* in-game text elements  */
 
 #stopwatch {
     font-size: 2rem;
@@ -160,15 +177,15 @@ input:focus, textarea:focus, select:focus {
     font-size: 3rem;
 }
 
-.white-heading {
-    color: #FF5A5F;
-}
+/* responsiveness for 601px width screens and above */
 
 @media screen and (min-width: 601px) {
     .staging-div p {
         width: 80%;
     }
 }
+
+/* responsiveness for 993px width screens and above */
 
 @media screen and (min-width: 993px) {
     .staging-div {
@@ -179,6 +196,8 @@ input:focus, textarea:focus, select:focus {
         width: 70%;
     }
 }
+
+/* responsiveness for 1201px width screens and above */
 
 @media screen and (min-width: 1201px) {
     .staging-div {
