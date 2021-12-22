@@ -109,7 +109,22 @@ select {
     border: none;
 }
 
+option {
+    border-radius: 10px;
+}
+
 input:focus, textarea:focus, select:focus {
     outline: none;
 }
 
+#number-selection-form {
+    margin-top: 2rem;
+}
+
+.order-button {
+    margin-bottom: 2rem;
+}
+
+.options {
+    top: 10px;
+}
