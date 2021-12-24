@@ -101,6 +101,8 @@ input {
 #number-of-players {
     padding: 5px 0 5px 15px;
     margin-top: 1rem;
+    width: 41px;
+    height: 25px;
 }
 
 select {
@@ -140,7 +142,7 @@ input:focus, textarea:focus, select:focus {
     font-size: 19pt;
 }
 
-#new-game-button {
+#new-game-reminder{
     margin-top: 3rem;
 }
 
