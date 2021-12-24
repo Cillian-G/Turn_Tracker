@@ -58,7 +58,7 @@ function numberSubmit(event) {
         nameAndColor += `
             <div class="form-padding">
                 <label for="name${[i]}"></label>       
-                <input type="text" name="name" id="name${[i]}" placeholder="Player ${playerNumber} name" required>
+                <input type="text" class="name-input" name="name" id="name${[i]}" placeholder="Player ${playerNumber} name" required>
                 <br>
                 <label for id="colors${[i]}"></label>
                 <select name="color" id="colors-id${[i]}" required>
