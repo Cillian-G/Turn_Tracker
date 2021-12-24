@@ -54,11 +54,11 @@
     <div id="stage-three" class="hidden staging-div page-bottom">
 
         <p>
-            Enter a name and color for each player
+            Enter a name and color for each player.
 
             <span id="clockwise-instructions" class="hidden">
-                For the clockwise setting to work, make sure to 
-                enter your names in clockwise order around the table.
+                For the clockwise setting to work, make sure to enter your names in clockwise 
+                order around the table. Don't worry, it doesn't matter whose name is entered first!
             </span>
         
         </p>
@@ -80,13 +80,14 @@
 
         </div>
 
+        <p>Press this button once you are ready to begin the first player's first turn.</p>
         <button id="start-game" class="game-button">Start game</button>
     </div> 
 
     <!-- stage five - current player info and stopwatch -->
 
     <div id="stage-five" class="hidden staging-div page-bottom">  
-        <p class="current-player">Its <span id="current-player"></span> turn!</p>
+        <p class="current-player">It's <span id="current-player"></span> turn!</p>
 
         <p id="stopwatch"><span id="minutes">00</span>:<span id="seconds">00</span></p>
 
@@ -101,9 +102,11 @@
     <!-- stage six - results -->
 
     <div id="stage-six" class="hidden staging-div page-bottom">
-        <h3>Total time per player</h3>
+        <h3 id="results-heading">Total time per player</h3>
 
         <div id="results"></div>
+
+        <button id="new-game-button"><a href="index.html">Start a new game!</a></button>
         
     </div>
 
