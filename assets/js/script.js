@@ -40,7 +40,6 @@ let appendSeconds = document.getElementById("seconds");
 let appendMinutes = document.getElementById("minutes");
 let stopped = false;
 let Interval;
-let totalGameTime = 0;
 
 /**
  * takes the number of players submitted by ther user and generates the player details form
