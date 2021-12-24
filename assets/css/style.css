@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
 
 /* Universal */
 
@@ -7,6 +7,8 @@
     padding: 0;
     font-family: 'Roboto Slab', serif;
 }
+
+
 
 body {
     background-color: #FF5A5F;
@@ -27,10 +29,24 @@ a {
 
 /* page structure */
 
+h1 {
+    font-size: 26pt;
+}
+
 p {
     text-align: center;
     margin: auto;
     width: 90%;
+}
+
+p,
+div,
+button,
+input,
+label,
+select,
+option {
+   font-size: 14pt;
 }
 
 .page-bottom {
@@ -56,6 +72,10 @@ button {
     border: none;
 }
 
+.name-input {
+    margin-bottom: 0.5rem;
+}
+
 .game-button {
     margin-top: 1rem;
     padding: 0.5rem 0.5rem;
@@ -76,6 +96,11 @@ input {
     border-radius: 10px;
     border: none;
     padding-left: 10px;
+}
+
+#number-of-players {
+    padding: 5px 0 5px 15px;
+    margin-top: 1rem;
 }
 
 select {
@@ -106,6 +131,17 @@ input:focus, textarea:focus, select:focus {
 
 #turn-order {
     padding-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* results page */
+
+#results-heading {
+    font-size: 19pt;
+}
+
+#new-game-button {
+    margin-top: 3rem;
 }
 
 /* Player colour classes */
@@ -170,7 +206,7 @@ input:focus, textarea:focus, select:focus {
 /* in-game text elements  */
 
 #stopwatch {
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 .current-player {
