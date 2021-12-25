@@ -114,7 +114,7 @@ To make a local copy of this project, you can clone it by typing the following i
 git clone - https://Cillian-G.github.io/Turn_Tracker.git  
 
 Alternatively, if using Gitpod, you can click the green Gitpod button, or use this link
-https://gitpod.io/#https://github.com/Cillian-G/daragh_goan_portfolio
+https://gitpod.io/#https://github.com/Cillian-G/Turn_Tracker
 
 ## Credits
 
