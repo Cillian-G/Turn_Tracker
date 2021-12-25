@@ -11,7 +11,7 @@ material.io color contrast tool
 
 ## Validation
 ![HTML validation](documentation/testing/html_validation.png)
- HTML validation
+HTML validation
 
 ![CSS validation](documentation/testing/css_validation.png)
 CSS validation
